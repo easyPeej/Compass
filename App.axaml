@@ -1,0 +1,23 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Compass.App"
+             RequestedThemeVariant="Default">
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Styles>
+        <FluentTheme />
+        <!-- includes the styles file from styles dir  -->
+        <StyleInclude Source="Styles/Styles1.axaml"></StyleInclude>
+    </Application.Styles>
+             
+    <Application.Resources>
+        <!-- alternate is a grey 1E1E1E -->
+        <SolidColorBrush x:Key="PrimaryBackground">#F2F2F2</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryText">#CFCFCF</SolidColorBrush>
+        <LinearGradientBrush x:Key="PrimaryBackgroundGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#1E1E1E"></GradientStop> 
+            <GradientStop Offset="1" Color="#383838"></GradientStop>
+        </LinearGradientBrush>
+    </Application.Resources>
+             
+</Application>
