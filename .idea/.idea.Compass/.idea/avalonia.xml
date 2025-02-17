@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="App.axaml" value="Compass.fsproj" />
+        <entry key="MainWindow.axaml" value="Compass.fsproj" />
+        <entry key="Styles/Styles1.axaml" value="Compass.fsproj" />
+        <entry key="Views/Window1.axaml" value="Compass.fsproj" />
+        <entry key="Views/second.axaml" value="Compass.fsproj" />
+      </map>
+    </option>
+  </component>
+</project>
