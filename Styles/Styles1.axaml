@@ -1,19 +1,30 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <Border Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}" Width="230">
-            <!-- Add Controls for Previewer Here -->
+        <Border Padding="20" Background="White" Width="230">
+            <!-- Add Controls for Previewer Here, Can use this for all properties buttons, textblocks etc-->
             
-            <Button Content="Hello world!"></Button>
+            <Button Content="Button"></Button>
             
         </Border>
     </Design.PreviewWith>
+    
+    
+    
     <!-- Using the styles selector to set style options for buttons -->
     <Style Selector="Button"> 
         <Setter Property="FontSize" Value="18"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"></Setter>
-        <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundGradient}"></Setter>
-        
+        <Setter Property="Background" Value="{DynamicResource SecondaryColour}"></Setter>
+        <Setter Property="CornerRadius" Value="5"></Setter>
+    </Style>
+    <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="Black"/>
+    </Style>
+    
+    
+    <Style Selector="TextBlock">
+        <Setter Property="Foreground" Value="Black"></Setter>
     </Style>
     
     <!-- Add Styles Here -->

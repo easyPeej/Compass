@@ -2,49 +2,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="600"
-        Width="1024" Height="600"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="700"
+        Width="1200" Height="700"
         x:Class="Compass.MainWindow"
-        Title="FsharpTester">
+        Title="Compass">
+
     <!-- "d" sets the size for the preview, below that is the actual size -->
 
     <!-- Primary background is defined within the App.xaml file using SolidBrushColour -->
-    <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="Auto, *">
-        <Border Padding="10" Background="{DynamicResource PrimaryBackgroundGradient}">
-            <Grid RowDefinitions="*, Auto">
-                <StackPanel Spacing="10">
-                    <Image Source="{SvgImage /Assets/Images/logo.svg}" Width="230"></Image> 
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>  <!-- Fixed for Nav -->
+            <ColumnDefinition Width="*"/>    <!-- Rest for views -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Navigation Panel (Left Side) -->
+    <Border Background="{DynamicResource PrimaryBackgroundGradient}" Padding="5, 5, 10, 5">   
+        <StackPanel Spacing="8">
+            <Image Source="{SvgImage /Assets/Images/logo.svg}"></Image> 
                     
-                    <TextBox Name="SearchBox" Watermark="Quick Search..." BorderBrush="White"/>
-                    <ListBox Name="ResultsList"/>
-                    
-                    <Button Content="Dashboard" Foreground="White" Background="Black" HorizontalAlignment="Stretch"></Button>
-                    <Button Content="Reporting" Foreground="White" Background="Black" HorizontalAlignment="Stretch"></Button>
-                    <Button Content="Filler" Foreground="White" Background="Black" HorizontalAlignment="Stretch"></Button>
-                    <Button Content="Filler" Foreground="White" Background="Black" HorizontalAlignment="Stretch"></Button>
-                    <Button Content="Filler" Foreground="White" Background="Black" HorizontalAlignment="Stretch"></Button>
-                    <Button Content="Filler" Foreground="White" Background="Black" HorizontalAlignment="Stretch"></Button>
-                </StackPanel>
-                <Button Grid.Row="1" Content="Login" Foreground="White" Background="Black"></Button>
-            </Grid>
-        </Border>
+            <Button Content="Dashboard" HorizontalAlignment="Stretch" Click="Dashboard"></Button>
+            <Button Content="Reporting" HorizontalAlignment="Stretch" Click="Reporting"></Button>
+            <Button Content="..." HorizontalAlignment="Stretch"></Button>
+            <Button Content="..." HorizontalAlignment="Stretch"></Button>
+            <Button Content="..." HorizontalAlignment="Stretch"></Button>
+            <Button Content="..." HorizontalAlignment="Stretch"></Button>
+            <Button Content="Login" Click="LoginButton" ></Button>
+            <Button Content="Testing" HorizontalAlignment="Stretch"></Button>
+        </StackPanel>
+    </Border>    
         
-        <Grid Grid.Column="1">
-            
-            <!-- Search tool bar in an expander -->
-            
-            <!--<Expander VerticalAlignment="Top">
-                <Expander.Header>
-                    Search Child
-                </Expander.Header>
-                <Grid RowDefinitions="*,*" ColumnDefinitions="0,*">
-                    <TextBlock Grid.Row="0" Grid.Column="0"
-                               VerticalAlignment="Center"></TextBlock>
-                    <TextBox Grid.Row="0" Grid.Column="1"
-                             Watermark="Child's Name" Width="200" />
-                </Grid>
-            </Expander>-->
-            
-        </Grid>
+
+        <!-- Content Area (Takes remaining space) -->
+        <ContentControl Name="MainContent" Grid.Column="1"/>
     </Grid>
+    
 </Window>

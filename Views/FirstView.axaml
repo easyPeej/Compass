@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Compass.Views.FirstView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Compass.Views">
+    
+    
+    <Grid>
+        <StackPanel>
+            <DockPanel>
+                <local:BannerTemplate/>
+            </DockPanel>
+        </StackPanel>
+        
+        <Canvas MaxHeight="450">
+            <Border Background="LightGray" CornerRadius="5" Padding="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TextBlock Name="Generic" Text="Landing Page"/>
+                <Canvas.Left>10</Canvas.Left>
+                <Canvas.Top>0</Canvas.Top>
+            </Border>
+            
+            <Border Background="LightGray" CornerRadius="5" Padding="10" Width="200" Height="100">
+                <TextBlock Name="AssignedCases" Text="Assigned Cases"/>
+                <Canvas.Right>10</Canvas.Right>
+                <Canvas.Top>0</Canvas.Top>
+            </Border>
+
+            
+            <Border Background="LightGray" CornerRadius="5" Padding="10" Width="200" Height="100">
+                <TextBlock Name="History" Text="History" />
+                <Canvas.Right>10</Canvas.Right>
+                <Canvas.Top>110</Canvas.Top>
+            </Border>
+        </Canvas>
+    </Grid>    
+    
+    
+
+    
+    
+    
+</UserControl> 

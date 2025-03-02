@@ -2,7 +2,7 @@
 
 open System
 open Avalonia
-
+open Avalonia.ReactiveUI
 module Program =
 
     [<CompiledName "BuildAvaloniaApp">] 
@@ -11,6 +11,7 @@ module Program =
             .Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
+            .UseReactiveUI()
             .LogToTrace(areas = Array.empty)
 
     [<EntryPoint; STAThread>]

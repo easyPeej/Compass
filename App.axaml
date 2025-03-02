@@ -13,11 +13,17 @@
     <Application.Resources>
         <!-- alternate is a grey 1E1E1E -->
         <SolidColorBrush x:Key="PrimaryBackground">#F2F2F2</SolidColorBrush>
-        <SolidColorBrush x:Key="PrimaryText">#CFCFCF</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryText">White</SolidColorBrush>
+        <SolidColorBrush x:Key="SecondaryColour">#3a75ed</SolidColorBrush>
+        
+        
         <LinearGradientBrush x:Key="PrimaryBackgroundGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
-            <GradientStop Offset="0" Color="#1E1E1E"></GradientStop> 
-            <GradientStop Offset="1" Color="#383838"></GradientStop>
+            <GradientStop Offset="0" Color="#222831  "></GradientStop>
+            <GradientStop Offset="1" Color="#222831  "></GradientStop>
+
         </LinearGradientBrush>
+        
+        
     </Application.Resources>
              
 </Application>

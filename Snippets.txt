@@ -1,0 +1,48 @@
+﻿// Top bar with page name - not dynamic yet
+            <!--<DockPanel VerticalAlignment="Top" Margin="10">
+                <Border Background="{DynamicResource SecondaryColour}" Height="50" >
+                    <TextBlock Text="Dashboard" Foreground="White" FontSize="24" FontWeight="Normal" Padding="10" 
+                               VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                </Border>
+            </DockPanel>
+  
+  
+// Canvas with two boxes for notifications 
+            <Canvas MaxHeight="555">
+                ~1~ Assigned Cases Box 2@1@
+                <Border Background="{DynamicResource SecondaryColour}" CornerRadius="5" Padding="10" Width="200" Height="100">
+                    <TextBlock Name="AssignedCases" Text="Assigned Cases"/>
+                    <Canvas.Right>10</Canvas.Right>
+                    <Canvas.Top>0</Canvas.Top>
+                </Border>
+
+                ~1~ History Box2 @1@
+                <Border Background="{DynamicResource SecondaryColour}" CornerRadius="5" Padding="10" Width="200" Height="100">
+                    <TextBlock Name="History" Text="History" />
+                    <Canvas.Right>10</Canvas.Right>
+                    <Canvas.Top>110</Canvas.Top>
+                </Border>
+            </Canvas>@1@-->
+            
+            
+//Search toolbar in an expander
+                        
+            <!--<Expander VerticalAlignment="Top">
+                            <Expander.Header>
+                                Search Child
+                            </Expander.Header>
+                            <Grid RowDefinitions="*,*" ColumnDefinitions="0,*">
+                                <TextBlock Grid.Row="0" Grid.Column="0"
+                                           VerticalAlignment="Center"></TextBlock>
+                                <TextBox Grid.Row="0" Grid.Column="1"
+                                         Watermark="Child's Name" Width="200" />
+                            </Grid>
+                        </Expander>-->
+                        
+                        
+                        
+            <!--<Button Content="Button with Flyout">
+                <Button.Flyout >
+                    <Flyout>This is the button flyout.</Flyout>
+                </Button.Flyout>
+            </Button>-->

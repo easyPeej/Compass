@@ -8,6 +8,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="ViewModels\LoginViewModel.fs" />
+        <Compile Include="Models\UserModel.fs" />
+        <Compile Include="Views\SecondView.fs" />
+        <Compile Include="Views\LoginView.fs" />
+        <Compile Include="Views\FirstView.fs" />
+        <Compile Include="Views\LoginPage.fs" />
+        <Compile Include="Views\BannerTemplate.fs" />
+        <Compile Include="Views\Dashboard.fs" />
+        <Compile Include="Views\Reporting.fs" />
         <Compile Include="Database.fs" />
         <Compile Include="MainWindow.axaml.fs" />
         <Compile Include="App.axaml.fs" />
@@ -15,8 +24,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.2.1" />
+        <PackageReference Include="Avalonia" Version="11.2.4" />
         <PackageReference Include="Avalonia.Desktop" Version="11.2.1" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.4" />
         <PackageReference Include="Avalonia.Svg.Skia" Version="11.2.0.2" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1" />
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1" />
@@ -26,6 +36,7 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.2" />
+        <PackageReference Include="ReactiveUI" Version="20.1.63" />
     </ItemGroup>
 
     <ItemGroup>
@@ -36,7 +47,4 @@
       <Content Include="bin\Debug\net9.0\Data.db" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Views\" />
-    </ItemGroup>
 </Project>
