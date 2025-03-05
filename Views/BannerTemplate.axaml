@@ -6,9 +6,8 @@
              x:Class="Compass.Views.BannerTemplate">
     
 
-        <Border Background="#222831" Height="115" DockPanel.Dock="Top">
+        <Border Background="#222831" Height="115" BorderBrush="LightSlateGray" BorderThickness="0, 0, 0, 0" DockPanel.Dock="Top">
             <TextBlock x:Name="TitleText"
-                       Text="Banner Text"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Padding="10"

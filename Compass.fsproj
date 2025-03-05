@@ -8,10 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="ViewModels\LoginViewModel.fs" />
         <Compile Include="Models\UserModel.fs" />
+        <Compile Include="ViewModels\LoginViewModel.fs" />
         <Compile Include="Views\SecondView.fs" />
-        <Compile Include="Views\LoginView.fs" />
         <Compile Include="Views\FirstView.fs" />
         <Compile Include="Views\LoginPage.fs" />
         <Compile Include="Views\BannerTemplate.fs" />
@@ -35,6 +34,8 @@
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+        <PackageReference Include="Dapper" Version="2.1.66" />
         <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.2" />
         <PackageReference Include="ReactiveUI" Version="20.1.63" />
     </ItemGroup>

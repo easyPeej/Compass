@@ -2,20 +2,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
-             x:Class="Compass.Views.LoginPage">
+             mc:Ignorable="d" d:DesignWidth="970" d:DesignHeight="700"
+             x:Class="Compass.Views.LoginPage"
+             xmlns:local="clr-namespace:Compass.Views">
     
-    <Canvas Width="400" Height="400">
-        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="250">
-            <StackPanel Margin="10" RenderTransformOrigin="0.5, 0.5">
-                <TextBlock Text="User Login" Margin="10" HorizontalAlignment="Center"/>
-                <TextBlock Text="Username" Margin="5, 10, 5, 1"/>
-                <TextBox Name="Username" DataContext="Username" />
-                <TextBlock Text="Password"  Margin="5, 10, 5, 1"/>
-                <TextBox Name="Pwd" DataContext="Pwd"/>
-                <Button Content="Login" HorizontalAlignment="Center" Margin="5"></Button>
-            </StackPanel>
-        </Border>
-    </Canvas>
+    <Grid>
+        <StackPanel>
+            <DockPanel>
+                <local:BannerTemplate/>
+            </DockPanel>
+        </StackPanel>
+        
+        <Canvas Width="300" Height="230">
+            <Border BorderBrush="SlateGray" BorderThickness="1, 1, 1, 5" 
+                    CornerRadius="5" Width="350">
+                <StackPanel Margin="10" RenderTransformOrigin="0.5, 0.5">
+                    
+                    <TextBlock FontSize="22" FontWeight="Bold" Text="User Login" Margin="10" HorizontalAlignment="Center"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Email" Margin="5, 10, 5, 1"/>
+                    <TextBox Name="EmailTextBox"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Password"  Margin="5, 10, 5, 1"/>
+                    <TextBox Name="PasswordBox" PasswordChar=""/>
+                    
+                    <Button Name="LoginButton" Content="Login" HorizontalAlignment="Center" Margin="15"></Button>
+                    
+                    <TextBlock Name="ErrorTextBlock" Foreground="Red" HorizontalAlignment="Center"/>
+
+                        <!-- working on above for now -->
+                    <CheckBox HorizontalAlignment="Center" IsChecked="False"
+                              Content="Remember me">
+                    </CheckBox>
+                    
+                    <TextBlock HorizontalAlignment="Center" Text="Forgot your password? -">
+                        <HyperlinkButton  Margin="-5, 5, 0, -7">Reset here</HyperlinkButton>
+                    </TextBlock>
+
+                </StackPanel>
+            </Border>
+        </Canvas>
+        
+    </Grid>
+    
+
     
 </UserControl>

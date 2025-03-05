@@ -1,29 +1,51 @@
 ﻿namespace Compass
-open System
+open Dapper
 open Microsoft.Data.Sqlite
 
+
+//////////////// LIKELY TO DELETE THIS AS SCHEMA SHOULD BE IN PLACE /////////////////////////////////
+
 module Database =
-    
-    (* This let block is an unfinished attempt at storing the database in a more secure location eg AppData - only accessible via administrative users. *)
-    
-    (*let dbPath=
-        let basePath =
-            if OperatingSystem.IsWindows() then
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
-            else 
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".local", "share")
-        Path.Combine(basePath, "Compass", "app.db")
-            
-    let connectionString = $"Data Source={dbPath}"    *)    
-    
     
     let initializeDatabase () =
         use connection = new SqliteConnection("Data Source=Data.db")
         connection.Open()
-        use command = connection.CreateCommand()
-        command.CommandText <- "
+        
+        // Creates a table if there isn't one already - purely for testing 
+        use createTableCommand = connection.CreateCommand()
+        createTableCommand.CommandText <- "
             CREATE TABLE IF NOT EXISTS Users (
-                Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                Name TEXT NOT NULL
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            first_name TEXT NOT NULL,
+            last_name TEXT NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL,
+            role TEXT CHECK(role IN ('Teacher', 'Admin', 'Safeguarding Lead', 'Support Staff', 'Parent', 'IT Staff')) NOT NULL,
+            phone TEXT DEFAULT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            last_login DATETIME DEFAULT NULL,
+            status TEXT CHECK(status IN ('Active', 'Suspended', 'Pending')) NOT NULL DEFAULT 'Active',
+            permissions TEXT DEFAULT 'Standard',
+            notes TEXT DEFAULT NULL
             )"
-        command.ExecuteNonQuery() |> ignore
+        createTableCommand.ExecuteNonQuery() |> ignore
+    
+        // Checking if users currently in DB if not it imputs some dummy data - purely for testing
+        let userCount: int = connection.ExecuteScalar<int>("SELECT COUNT(*) FROM Users")
+        
+        if userCount = 0 then
+    
+            let insertQuery = "
+                INSERT INTO Users (first_name, last_name, email, password_hash, role, phone, status, permissions, notes)
+                VALUES (@FirstName, @LastName, @Email, @PasswordHash, @Role, @Phone, @Status, @Permissions, @Notes)"
+            
+            let users = [
+                {| FirstName = "Alice"; LastName = "Johnson"; Email = "alice@example.com"; PasswordHash = BCrypt.Net.BCrypt.HashPassword("password123"); Role = "Teacher"; Phone = "1234567890"; Status = "Active"; Permissions = "Standard"; Notes = "Safeguarding lead" |}
+                {| FirstName = "Bob"; LastName = "Smith"; Email = "bob@example.com"; PasswordHash = BCrypt.Net.BCrypt.HashPassword("adminpass"); Role = "Admin"; Phone = "0987654321"; Status = "Active"; Permissions = "Full"; Notes = "IT Administrator" |}
+            ]
+        
+            
+            connection.Execute(insertQuery, users) |> ignore
+            printfn "Default users inserted."
+        else
+            printfn "Users already exist, skipping insert."

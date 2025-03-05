@@ -12,8 +12,8 @@ type MainWindow () as this =
 
     do this.InitializeComponent()
     do
-        let firstView = new FirstView()
-        this.FindControl<ContentControl>("MainContent").Content <- firstView
+        let loginPage = new LoginPage()
+        this.FindControl<ContentControl>("MainContent").Content <- loginPage
     
         
     // method for switching user content in the main window
