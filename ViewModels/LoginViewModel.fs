@@ -4,15 +4,16 @@ open System
 open BCrypt.Net
 open Dapper
 open Microsoft.Data.Sqlite
-open Avalonia.Controls
-open Avalonia.Interactivity
 open ReactiveUI
+open Compass.Services
 open Compass.Models
 
 
 
 type LoginViewModel() =
     inherit ReactiveObject()
+    
+    
     
     // bind properties
     let mutable email = ""
@@ -36,6 +37,19 @@ type LoginViewModel() =
         and set value =
             errorMessage <- value
             this.RaisePropertyChanged()
+    
+    
+   // Test method to check the session singleton works as intended and stores user data on login        
+    member this.CheckSession() =
+        match UserSession.UserSession with
+        | Some user ->
+            printf $"Logged in as: %s{user.first_name} %s{user.last_name} (Email: %s{user.email})"
+            this.ErrorMessage <- $"Welcome, {user.first_name}"
+        | None ->
+            printf "no user logged in"
+            this.ErrorMessage <- "No active session"
+    // Test method -----------------------------------------------------------------------------
+   
             
     member this.Login() =
         if String.IsNullOrWhiteSpace(this.Email) || String.IsNullOrWhiteSpace(this.Password) then
@@ -49,29 +63,21 @@ type LoginViewModel() =
             let result =
                 connection.Query<User>(sql, {| Email = this.Email |})
                 |> Seq.tryHead
-            
-            (*match userOption with
-            | Null ->
-                this.ErrorMessage <- "HI"
-                false
-            | user ->
-                if BCrypt.Verify(this.Password, user.password_hash) then
-                    this.ErrorMessage <- ""
-                    true
-                else
-                    this.ErrorMessage <- "Invalid email or password"
-                    false*)
-                    
+                              
             match result with
             | None ->
                 this.ErrorMessage <- "Invalid email or password"
                 false
             | Some user ->
                 if BCrypt.Verify(this.Password, user.password_hash) then
+                    UserSession.UserSession <- Some user
                     this.ErrorMessage <- ""
+                    
+                    
+                    // Using the session tester method
+                    this.CheckSession()
                     true
                 else
                     this.ErrorMessage <- "Invalid email or password"
                     false
-
-
+                    

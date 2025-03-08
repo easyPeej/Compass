@@ -25,23 +25,23 @@ module Database =
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             last_login DATETIME DEFAULT NULL,
             status TEXT CHECK(status IN ('Active', 'Suspended', 'Pending')) NOT NULL DEFAULT 'Active',
-            permissions TEXT DEFAULT 'Standard',
-            notes TEXT DEFAULT NULL
+            permissions TEXT DEFAULT 'Standard'
             )"
         createTableCommand.ExecuteNonQuery() |> ignore
     
-        // Checking if users currently in DB if not it imputs some dummy data - purely for testing
+        // Checking if users currently in DB if not it inputs some dummy data - purely for testing
         let userCount: int = connection.ExecuteScalar<int>("SELECT COUNT(*) FROM Users")
         
         if userCount = 0 then
     
+            // FYI these queries are parameterized through dapper securing them against SQL injections
             let insertQuery = "
-                INSERT INTO Users (first_name, last_name, email, password_hash, role, phone, status, permissions, notes)
-                VALUES (@FirstName, @LastName, @Email, @PasswordHash, @Role, @Phone, @Status, @Permissions, @Notes)"
+                INSERT INTO Users (first_name, last_name, email, password_hash, role, phone, status, permissions)
+                VALUES (@FirstName, @LastName, @Email, @PasswordHash, @Role, @Phone, @Status, @Permissions)"
             
             let users = [
-                {| FirstName = "Alice"; LastName = "Johnson"; Email = "alice@example.com"; PasswordHash = BCrypt.Net.BCrypt.HashPassword("password123"); Role = "Teacher"; Phone = "1234567890"; Status = "Active"; Permissions = "Standard"; Notes = "Safeguarding lead" |}
-                {| FirstName = "Bob"; LastName = "Smith"; Email = "bob@example.com"; PasswordHash = BCrypt.Net.BCrypt.HashPassword("adminpass"); Role = "Admin"; Phone = "0987654321"; Status = "Active"; Permissions = "Full"; Notes = "IT Administrator" |}
+                {| FirstName = "Alice"; LastName = "Johnson"; Email = "alice@example.com"; PasswordHash = BCrypt.Net.BCrypt.HashPassword("password123"); Role = "Teacher"; Phone = "1234567890"; Status = "Active"; Permissions = "Standard";  |}
+                {| FirstName = "Bob"; LastName = "Smith"; Email = "bob@example.com"; PasswordHash = BCrypt.Net.BCrypt.HashPassword("adminpass"); Role = "Admin"; Phone = "0987654321"; Status = "Active"; Permissions = "Full";  |}
             ]
         
             

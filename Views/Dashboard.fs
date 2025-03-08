@@ -2,7 +2,10 @@
 
 open Avalonia.Controls
 open Avalonia.Markup.Xaml
-open Compass.Views
+
+open Compass.Models
+open Compass.Services
+
 
 type Dashboard() as this =
     inherit UserControl()

@@ -13,7 +13,6 @@ type [<CLIMutable>] User =
         last_login: System.DateTime option
         status: string
         permissions: string
-        notes: string option
     }
 
 

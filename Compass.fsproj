@@ -8,7 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="Database.fs" />
         <Compile Include="Models\UserModel.fs" />
+        <Compile Include="Services\UserSession.fs" />
         <Compile Include="ViewModels\LoginViewModel.fs" />
         <Compile Include="Views\SecondView.fs" />
         <Compile Include="Views\FirstView.fs" />
@@ -16,7 +18,6 @@
         <Compile Include="Views\BannerTemplate.fs" />
         <Compile Include="Views\Dashboard.fs" />
         <Compile Include="Views\Reporting.fs" />
-        <Compile Include="Database.fs" />
         <Compile Include="MainWindow.axaml.fs" />
         <Compile Include="App.axaml.fs" />
         <Compile Include="Program.fs" />
@@ -47,5 +48,6 @@
     <ItemGroup>
       <Content Include="bin\Debug\net9.0\Data.db" />
     </ItemGroup>
+
 
 </Project>
