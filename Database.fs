@@ -20,7 +20,7 @@ module Database =
             last_name TEXT NOT NULL,
             email TEXT UNIQUE NOT NULL,
             password_hash TEXT NOT NULL,
-            role TEXT CHECK(role IN ('Teacher', 'Admin', 'Safeguarding Lead', 'Support Staff', 'Parent', 'IT Staff')) NOT NULL,
+            role TEXT CHECK(role IN ('Teacher', 'Admin', 'Safeguarding Lead', 'Support Staff')) NOT NULL,
             phone TEXT DEFAULT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             last_login DATETIME DEFAULT NULL,

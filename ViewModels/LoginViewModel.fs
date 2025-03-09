@@ -43,7 +43,7 @@ type LoginViewModel() =
     member this.CheckSession() =
         match UserSession.UserSession with
         | Some user ->
-            printf $"Logged in as: %s{user.first_name} %s{user.last_name} (Email: %s{user.email})"
+            printf $"Logged in as: %s{user.first_name} %s{user.last_name} as %s{user.role} (Email: %s{user.email})"
             this.ErrorMessage <- $"Welcome, {user.first_name}"
         | None ->
             printf "no user logged in"

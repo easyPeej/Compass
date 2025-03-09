@@ -16,6 +16,10 @@
         <Canvas Width="300" Height="230">
             <Border BorderBrush="SlateGray" BorderThickness="1, 1, 1, 5" 
                     CornerRadius="5" Width="350">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Opacity="0.4" Color="#222831"/>
+                </Border.Effect>
+                
                 <StackPanel Margin="10" RenderTransformOrigin="0.5, 0.5">
                     
                     <TextBlock FontSize="22" FontWeight="Bold" Text="User Login" Margin="10" HorizontalAlignment="Center"/>
@@ -23,7 +27,7 @@
                     <TextBlock Name="ErrorTextBlock" Foreground="Red" HorizontalAlignment="Center"/>
                     
                     <TextBlock FontWeight="Bold" Text="Email" Margin="5, 10, 5, 1"/>
-                    <TextBox Name="EmailTextBox"/>
+                    <TextBox Name="EmailTextBox" />
                     
                     <TextBlock FontWeight="Bold" Text="Password"  Margin="5, 10, 5, 1"/>
                     <TextBox Name="PasswordBox" PasswordChar=""/>

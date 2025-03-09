@@ -16,8 +16,8 @@ type MainWindow () as this =
         this.FindControl<ContentControl>("MainContent").Content <- loginPage
         
         loginPage.LoginSuccess.Add(fun _ ->
-            let dash = new Dashboard()
-            this.FindControl<ContentControl>("MainContent").Content <- dash)
+            let dashboard = new Dashboard()
+            this.FindControl<ContentControl>("MainContent").Content <- dashboard)
     
         
     // method for switching user content in the main window

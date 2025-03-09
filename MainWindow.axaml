@@ -19,7 +19,7 @@
         <!-- Navigation Panel (Left Side) -->
     <Border Background="{DynamicResource 
     PrimaryBackgroundGradient}" Padding="5, 5, 10, 5"
-            BorderThickness="0, 0, 2, 0" BorderBrush="SlateGray">   
+            >   
         <StackPanel Spacing="8">
             <Image Source="{SvgImage /Assets/Images/logo.svg}"></Image> 
                     
@@ -30,7 +30,7 @@
             <Button Content="..." HorizontalAlignment="Stretch"></Button>
             <Button Content="..." HorizontalAlignment="Stretch"></Button>
             <Button Content="Login" Click="LoginButton" ></Button>
-            <Button Content="Testing" HorizontalAlignment="Stretch"></Button>
+
         </StackPanel>
     </Border>    
         
