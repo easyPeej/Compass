@@ -7,9 +7,15 @@ open ReactiveUI
 type public DashboardViewModel() =
     inherit ReactiveObject()
     
+    // User session information - mostly for display 
     let mutable firstName = ""
     let mutable lastName = ""
     let mutable role = ""
+    
+    // report information
+    let mutable fullReport = ""
+    let mutable count = 0
+    
     
     do
         match UserSession.UserSession with
@@ -40,7 +46,9 @@ type public DashboardViewModel() =
             role <- value
             this.RaisePropertyChanged()
             
+    // Banner display 
     member this.FullName =
         $"{firstName} {lastName}"
+        
 
             

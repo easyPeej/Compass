@@ -15,7 +15,8 @@
                        VerticalAlignment="Top"
                        Padding="0,30,20,0"
                        Foreground="White"
-                       FontSize="14"/>
+                       FontSize="14"
+                       FontWeight="Light"/>
             <TextBlock Text="{Binding FullName}"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"

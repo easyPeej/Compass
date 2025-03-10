@@ -1,4 +1,5 @@
-﻿namespace Compass
+﻿namespace Compass.Database
+
 open Dapper
 open Microsoft.Data.Sqlite
 
@@ -11,7 +12,7 @@ module Database =
         use connection = new SqliteConnection("Data Source=Data.db")
         connection.Open()
         
-        // Creates a table if there isn't one already - purely for testing 
+        // Creates a table for users if there isn't one already - purely for testing 
         use createTableCommand = connection.CreateCommand()
         createTableCommand.CommandText <- "
             CREATE TABLE IF NOT EXISTS Users (
@@ -25,9 +26,23 @@ module Database =
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             last_login DATETIME DEFAULT NULL,
             status TEXT CHECK(status IN ('Active', 'Suspended', 'Pending')) NOT NULL DEFAULT 'Active',
-            permissions TEXT DEFAULT 'Standard'
+            permissions TEXT DEFAULT 'Standard')"
+        createTableCommand.ExecuteNonQuery() |> ignore
+        
+       
+        createTableCommand.CommandText <- "
+            CREATE TABLE IF NOT EXISTS SafeguardingReports (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            reporter_id INTEGER NOT NULL,
+            concern_description TEXT NOT NULL,
+            date_reported DATETIME DEFAULT CURRENT_TIMESTAMP,
+            status TEXT CHECK(status IN ('Open', 'Under Review', 'Resolved')) NOT NULL DEFAULT 'Open',
+            assigned_staff INTEGER DEFAULT NULL,
+            FOREIGN KEY (reporter_id) REFERENCES Users(id),
+            FOREIGN KEY (assigned_staff) REFERENCES Users(id)
             )"
         createTableCommand.ExecuteNonQuery() |> ignore
+        
     
         // Checking if users currently in DB if not it inputs some dummy data - purely for testing
         let userCount: int = connection.ExecuteScalar<int>("SELECT COUNT(*) FROM Users")
@@ -49,3 +64,20 @@ module Database =
             printfn "Default users inserted."
         else
             printfn "Users already exist, skipping insert."
+        
+        
+        
+
+        // Inserting dummy safeguarding data
+        let sgCount: int = connection.ExecuteScalar<int>("SELECT COUNT(*) FROM SafeguardingReports")
+        
+        if sgCount = 0 then
+            let insertReportQuery = "INSERT INTO SafeguardingReports (reporter_id, concern_description, status, assigned_staff)
+                VALUES (@ReporterId, @ConcernDescription, @Status, @AssignedStaff)"
+                
+            let reports = [
+                {| ReporterId = 1; ConcernDescription = "Student showing signs of distress."; Status = "Open"; AssignedStaff = 2 |}
+                {| ReporterId = 2; ConcernDescription = "Incident of bullying reported."; Status = "Under Review"; AssignedStaff = 1 |}
+            ]
+
+            connection.Execute(insertReportQuery, reports) |> ignore

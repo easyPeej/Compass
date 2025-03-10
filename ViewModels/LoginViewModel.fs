@@ -3,10 +3,10 @@
 open System
 open BCrypt.Net
 open Dapper
-open Microsoft.Data.Sqlite
 open ReactiveUI
 open Compass.Services
 open Compass.Models
+open Compass.Database
 
 
 
@@ -56,14 +56,13 @@ type LoginViewModel() =
             this.ErrorMessage <- "Email and Password are required"
             false
         else
-            use connection = new SqliteConnection("Data Source=Data.db")
-            connection.Open()
-            
+            use connection = DbConnect.GetConnection()
+
             let sql = "SELECT * FROM Users WHERE email = @Email"
             let result =
                 connection.Query<User>(sql, {| Email = this.Email |})
                 |> Seq.tryHead
-                              
+                             
             match result with
             | None ->
                 this.ErrorMessage <- "Invalid email or password"
