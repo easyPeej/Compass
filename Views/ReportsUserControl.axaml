@@ -6,14 +6,15 @@
              x:Class="Compass.Views.ReportsUserControl">
     
     <StackPanel>
-        <TextBlock Text="Safeguarding Reports" FontSize="20" Margin="10" />
-        
-        <ListBox ItemsSource="{Binding FullReport}" Margin="10">
+        <ListBox ItemsSource="{Binding FullReport}" Margin="5" Background="#B0E0E6" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
+                        <TextBlock Text="Report Concern: " FontWeight="Bold" />
                         <TextBlock Text="{Binding concern_description}" />
+                        <TextBlock Text="Status: " FontWeight="Bold"/>
                         <TextBlock Text="{Binding status}" />
+                        <TextBlock Text="Time &amp; Date Published: " FontWeight="Bold"/>
                         <TextBlock Text="{Binding date_reported}" />
                     </StackPanel>
                 </DataTemplate>

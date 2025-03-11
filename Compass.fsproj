@@ -11,9 +11,9 @@
         <Compile Include="Database\Database.fs" />
         <Compile Include="Database\DbConnect.fs" />
         <Compile Include="Models\UserModel.fs" />
+        <Compile Include="Services\UserSession.fs" />
         <Compile Include="Models\ReportsModel.fs" />
         <Compile Include="Database\Reports.fs" />
-        <Compile Include="Services\UserSession.fs" />
         <Compile Include="ViewModels\LoginViewModel.fs" />
         <Compile Include="ViewModels\ReportsViewModel.fs" />
         <Compile Include="Views\ReportsUserControl.fs" />

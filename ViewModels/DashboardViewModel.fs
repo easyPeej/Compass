@@ -12,10 +12,6 @@ type public DashboardViewModel() =
     let mutable lastName = ""
     let mutable role = ""
     
-    // report information
-    let mutable fullReport = ""
-    let mutable count = 0
-    
     
     do
         match UserSession.UserSession with

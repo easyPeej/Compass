@@ -15,8 +15,8 @@ type Dashboard() as this =
         
         // For ReportsUserControl
         let reportsControl = new ReportsUserControl()
-        let container = this.FindControl<StackPanel>("ContainerPanel")
-        container.Children.Add(reportsControl)
+        let Panel = this.FindControl<StackPanel>("ContainerPanel")
+        Panel.Children.Add(reportsControl)
     
 
     member private this.InitializeComponent() =
