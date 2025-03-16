@@ -11,11 +11,15 @@
         <Compile Include="Database\Database.fs" />
         <Compile Include="Database\DbConnect.fs" />
         <Compile Include="Models\UserModel.fs" />
+        <Compile Include="Models\NewStaffModel.fs" />
         <Compile Include="Services\UserSession.fs" />
         <Compile Include="Models\ReportsModel.fs" />
         <Compile Include="Database\Reports.fs" />
+        <Compile Include="Database\Staff.fs" />
         <Compile Include="ViewModels\LoginViewModel.fs" />
         <Compile Include="ViewModels\ReportsViewModel.fs" />
+        <Compile Include="ViewModels\MainWindowViewModel.fs" />
+        <Compile Include="ViewModels\NewStaffFormViewModel.fs" />
         <Compile Include="Views\ReportsUserControl.fs" />
         <Compile Include="ViewModels\DashboardViewModel.fs" />
         <Compile Include="Views\SecondView.fs" />
@@ -24,6 +28,7 @@
         <Compile Include="Views\BannerTemplate.fs" />
         <Compile Include="Views\Dashboard.fs" />
         <Compile Include="Views\Reporting.fs" />
+        <Compile Include="Views\NewStaffFormView.fs" />
         <Compile Include="MainWindow.axaml.fs" />
         <Compile Include="App.axaml.fs" />
         <Compile Include="Program.fs" />

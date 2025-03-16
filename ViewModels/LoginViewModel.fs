@@ -50,7 +50,8 @@ type LoginViewModel() =
             this.ErrorMessage <- "No active session"
     // Test method -----------------------------------------------------------------------------
    
-            
+    
+    // the 'else' portion could do with migrating to the Staff.fs db file to keep consistent with the seperation        
     member this.Login() =
         if String.IsNullOrWhiteSpace(this.Email) || String.IsNullOrWhiteSpace(this.Password) then
             this.ErrorMessage <- "Email and Password are required"
@@ -65,7 +66,7 @@ type LoginViewModel() =
                              
             match result with
             | None ->
-                this.ErrorMessage <- "Invalid email or password"
+                this.ErrorMessage <- "Invalid email or password." 
                 false
             | Some user ->
                 if BCrypt.Verify(this.Password, user.password_hash) then
@@ -77,6 +78,6 @@ type LoginViewModel() =
                     this.CheckSession()
                     true
                 else
-                    this.ErrorMessage <- "Invalid email or password"
+                    this.ErrorMessage <- "Invalid email or password."
                     false
                     

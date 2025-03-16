@@ -11,6 +11,7 @@ type ReportsViewModel() =
     let mutable reportById = []
     let mutable assigned_staff = 0L
 
+
     //let mutable count = 0
     
     do
@@ -19,6 +20,7 @@ type ReportsViewModel() =
              assigned_staff <- user.id
         | None ->
             assigned_staff <- 0L
+            
     
     member this.FullReport
         with get() = fullReport
@@ -37,14 +39,9 @@ type ReportsViewModel() =
         this.FullReport <- fetchedReports
         
     member this.FetchReportsByAssigned () =
-        printf ($"Fetching reports for user ID: {assigned_staff}") // Debugging
+        printf $"Fetching reports for user ID: {assigned_staff}" // Debugging
         let fetchedReportsById = FetchReportsByAssigned assigned_staff
-        printf ($"Fetched {fetchedReportsById.Length} reports.") // Debugging
+        printf $"Fetched {fetchedReportsById.Length} reports." // Debugging
         this.ReportById <- fetchedReportsById
-    
-        
-        
-    
-    
-    
-    
+
+

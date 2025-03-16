@@ -1,0 +1,70 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="970" d:DesignHeight="700"
+             x:Class="Compass.Views.NewStaffFormView"
+             xmlns:local="clr-namespace:Compass.Views"
+             xmlns:vm="clr-namespace:Compass.ViewModels"
+             x:DataType="vm:NewStaffFormViewModel">
+   
+        
+    <Grid>
+        <StackPanel>
+            <DockPanel>
+                <local:BannerTemplate/>
+            </DockPanel>
+        </StackPanel>
+        
+        <Canvas Width="300" Height="400">
+            <Border BorderBrush="SlateGray" BorderThickness="1, 1, 1, 5" 
+                    CornerRadius="5" Width="350">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Opacity="0.4" Color="#222831"/>
+                </Border.Effect>
+                
+                <StackPanel Margin="10" RenderTransformOrigin="0.5, 0.5">
+                    
+                    <TextBlock FontSize="22" FontWeight="Bold" Text="Staff Member Details" Margin="10" HorizontalAlignment="Center"/>
+                    
+                    <!-- ROLE HERE -->
+                    <TextBlock FontWeight="Bold" Text="Staff Role"  Margin="5, 10, 5, 1"/>
+                    <ComboBox ItemsSource="{Binding Roles}"
+                              SelectedItem="{Binding SelectedRole}"
+                              PlaceholderText="..."
+                              HorizontalAlignment="Stretch"/>
+                    
+                    <TextBlock Name="ErrorTextBlock" Foreground="Red" HorizontalAlignment="Center"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="First name" Margin="5, 0, 5, 1"/>
+                    <TextBox Name="ForenameTextBox" Text="{Binding FirstName}"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Last name" Margin="5, 10, 5, 1"/>
+                    <TextBox Name="SurnameTextBox" Text="{Binding LastName}"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Email" Margin="5, 10, 5, 1"/>
+                    <TextBox Name="EmailTextBox" Text="{Binding Email}"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Contact Number" Margin="5, 10, 5, 1"/>
+                    <TextBox Name="ContactNumberTextBox" Text="{Binding Phone}"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Password"  Margin="5, 10, 5, 1"/>
+                    <TextBox Name="PasswordBox" PasswordChar="" Text="{Binding Password}"/>
+                    
+                    <!--<TextBlock FontWeight="Bold" Text="Confirm Password"  Margin="5, 10, 5, 1"/>
+                    <TextBox Name="ConfirmPasswordBox" PasswordChar=""/>-->
+                    
+                    
+                    <!-- permissions here ??? -->
+                    
+                    <Button Content="Create Account" HorizontalAlignment="Center" Margin="15" Command="{Binding CreateStaff}"></Button>
+                    
+                </StackPanel>
+            </Border>
+        </Canvas>
+        
+    </Grid>
+
+
+    
+</UserControl>

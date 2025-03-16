@@ -3,14 +3,16 @@ namespace Compass
 open Avalonia
 open Avalonia.Controls 
 open Avalonia.Markup.Xaml
-open Compass.Views 
+open Compass.Views
 open Avalonia.Interactivity
-
+open Compass.Services
 
 type MainWindow () as this = 
     inherit Window ()
 
-    do this.InitializeComponent()
+    do
+        this.InitializeComponent()
+            
     do
         let loginPage = new LoginPage()
         this.FindControl<ContentControl>("MainContent").Content <- loginPage
@@ -36,6 +38,11 @@ type MainWindow () as this =
           let loginPage = new LoginPage()
           this.NavigateToPage(loginPage)
           
+    member this.LogoutButton(sender: obj, e: RoutedEventArgs) =
+          UserSession.Logout()
+          let loginPage = new LoginPage()
+          this.NavigateToPage(loginPage)
+          
     member this.Dashboard(sender: obj, e: RoutedEventArgs) =
         let dashboard = new Dashboard()
         this.NavigateToPage(dashboard)
@@ -43,6 +50,10 @@ type MainWindow () as this =
     member this.Reporting(sender: obj, e: RoutedEventArgs) =
         let reporting = new Reporting()
         this.NavigateToPage(reporting)
+        
+    member this.AddMember(sender: obj, e: RoutedEventArgs) =
+        let addStaff = new NewStaffFormView()
+        this.NavigateToPage(addStaff)        
         
         
     member private this.InitializeComponent() =

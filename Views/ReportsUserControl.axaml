@@ -6,7 +6,7 @@
              x:Class="Compass.Views.ReportsUserControl">
     
     <StackPanel>
-        <ListBox ItemsSource="{Binding FullReport}" Margin="5" Background="#B0E0E6" >
+        <ListBox ItemsSource="{Binding FullReport}" Margin="5" Background="#B0E0E6" MaxHeight="500">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

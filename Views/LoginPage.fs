@@ -3,8 +3,6 @@
 open Avalonia.Controls
 open Avalonia.Markup.Xaml
 open Compass.ViewModels
-open Compass.Views
-open ReactiveUI
 
 type LoginPage() as this =
     inherit UserControl()
@@ -32,12 +30,12 @@ type LoginPage() as this =
         
         loginButton.Click.Add(fun _ ->
             if viewModel.Login() then
-                // successful do something here
+                // success - do things here
                 printf "login successful"
                 LoginSuccessEvent.Trigger()
 
             else
-                // shows error message
+                // fail - shows error message 
                 errorTextBlock.Text <- viewModel.ErrorMessage
                 )
         
