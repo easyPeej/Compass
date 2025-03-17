@@ -11,8 +11,7 @@
         <DockPanel>
             <local:BannerTemplate/>
         </DockPanel>
-        
-            <Grid>
+        <Grid>
 
         
         <Canvas Width="585" Height="500">
@@ -23,11 +22,11 @@
                 
                 <StackPanel Margin="10" RenderTransformOrigin="0.5, 0.5">
                     
-                    <TextBlock FontSize="22" FontWeight="Bold" Text="Staff Member Details" Margin="10" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="22" FontWeight="Bold" Text="Create new safeguard report" Margin="10" HorizontalAlignment="Center"/>
 
-                    <TextBlock FontWeight="Bold" Text="Staff Role"  Margin="5, 10, 5, 1"/>
-                    <ComboBox ItemsSource="{Binding }"
-                              SelectedItem="{Binding }"
+                    <TextBlock FontWeight="Bold" Text="Report Keywords"  Margin="5, 10, 5, 1"/>
+                    <ComboBox ItemsSource="{Binding AllKeywords}"
+                              SelectedItem="{Binding SelectedKeyword}"
                               PlaceholderText="..."
                               HorizontalAlignment="Stretch"/>
                     

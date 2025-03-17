@@ -5,6 +5,7 @@ open Avalonia.Controls.ApplicationLifetimes
 open Avalonia.Markup.Xaml
 open Compass.Database
 open Compass.Database.Database
+open Compass.ViewModels
 
 type App() =
     inherit Application()
@@ -13,7 +14,7 @@ type App() =
             AvaloniaXamlLoader.Load(this)
 
     override this.OnFrameworkInitializationCompleted() =
-        initializeDatabase()   
+        initializeDatabase()
         
         match this.ApplicationLifetime with
         | :? IClassicDesktopStyleApplicationLifetime as desktop ->

@@ -21,3 +21,9 @@ module Reports =
             connection.Query<SafeguardingReports>(query, {| assigned_staff = assigned_staff |})
             |> Seq.toList
             
+        let FetchAllKeywords () =
+            use connection = DbConnect.GetConnection()
+            let query = "SELECT keyword FROM Keywords"
+            connection.Query<string>(query)
+            |> Seq.toList 
+            

@@ -8,7 +8,7 @@ open System.Collections.ObjectModel
 open Compass.Models
 open Dapper
 
-type ReportsViewModel() =
+type ReportsViewModel() as this =
     inherit ReactiveObject()
     
     let mutable fullReport = ObservableCollection<SafeguardingReports>()
@@ -17,11 +17,15 @@ type ReportsViewModel() =
     
     let mutable selectedReport: SafeguardingReports option = None
     let mutable status = ""
+    let mutable allKeywords = ObservableCollection<string>()
+    let mutable selectedKeyword: string option = None
 
 
     //let mutable count = 0
     
     do
+        this.FetchKeywords()
+       
         match UserSession.UserSession with
         | Some user ->
              assigned_staff <- user.id
@@ -55,6 +59,19 @@ type ReportsViewModel() =
             status <- value
             this.RaisePropertyChanged()
             
+    member this.AllKeywords
+        with get() = allKeywords
+        and set value =
+            if allKeywords <> value then
+                allKeywords <- value 
+                this.RaisePropertyChanged()
+            
+    member this.SelectedKeyword
+        with get() = selectedKeyword
+        and set value =
+            selectedKeyword <- value
+            this.RaisePropertyChanged()
+            
     member this.LoadAllReports() =
         let fetchedReports = FetchReports()
         this.FullReport <- ObservableCollection<SafeguardingReports>(fetchedReports |> List.toSeq)
@@ -72,6 +89,12 @@ type ReportsViewModel() =
             let query = "UPDATE Safeguarding SafeguardingReports SET concern_description = @ConcernDescription, status = @Status WHERE id = @id "
             connection.Execute(query, report) |> ignore
         | None -> printf "No report selected for update"
+        
+    member this.FetchKeywords() =
+        let fetchedKeywords = FetchAllKeywords()
+        this.AllKeywords <- ObservableCollection<string>(fetchedKeywords |> List.toSeq)
+        // WORK IN PROG
+         
             
 
 
