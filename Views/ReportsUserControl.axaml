@@ -6,7 +6,7 @@
              x:Class="Compass.Views.ReportsUserControl">
     
     <StackPanel>
-        <ListBox ItemsSource="{Binding FullReport}" Margin="5" Background="#B0E0E6" MaxHeight="500">
+        <!--<ListBox ItemsSource="{Binding FullReport}" Margin="5" Background="#B0E0E6" MaxHeight="500">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -19,6 +19,35 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>
+        </ListBox>-->
+        
+        
+        <!--<DataGrid ItemsSource="{Binding FullReport}" AutoGenerateColumns="False"
+                  CanUserAddRows="False" CanUserDeleteRows="False" 
+                  IsReadOnly="False" SelectionMode="Single"
+                  SelectedItem="{Binding SelectedReport, Mode=TwoWay}">
+
+            ~1~ Concern Description Column @1@
+            <DataGridTextColumn Header="Report Concern" 
+                                Binding="{Binding ConcernDescription}" 
+                                IsReadOnly="False"/>
+
+            ~1~ Status Column with Drop-down @1@
+            <DataGridTemplateColumn Header="Status">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <ComboBox Items="{Binding DataContext.StatusOptions, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
+                                  SelectedItem="{Binding Status, Mode=TwoWay}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
+            ~1~ Date Reported (Read-Only) @1@
+            <DataGridTextColumn Header="Time & Date Published" 
+                                Binding="{Binding DateReported}" 
+                                IsReadOnly="True"/>
+        </DataGrid>-->
+
+        
     </StackPanel>
 </UserControl>

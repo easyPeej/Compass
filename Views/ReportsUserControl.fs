@@ -11,6 +11,7 @@ type ReportsUserControl() as this =
     do
         AvaloniaXamlLoader.Load(this)
         let viewModel = ReportsViewModel()
-        viewModel.LoadAllReports()
         this.DataContext <- viewModel
+        viewModel.LoadAllReports()
+        
         

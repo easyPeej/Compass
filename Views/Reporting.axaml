@@ -3,15 +3,72 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Compass.Views"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Compass.Views.Reporting">
+             xmlns:vm="clr-namespace:Compass.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="970" d:DesignHeight="700"
+             x:Class="Compass.Views.Reporting"
+             x:DataType="vm:ReportsViewModel">
     <StackPanel>
         <DockPanel>
             <local:BannerTemplate/>
         </DockPanel>
         
-        <TextBlock Text="Reporting"/>
+            <Grid>
+
+        
+        <Canvas Width="585" Height="500">
+            <Border Width="600">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Opacity="0.4" Color="#222831"/>
+                </Border.Effect>
+                
+                <StackPanel Margin="10" RenderTransformOrigin="0.5, 0.5">
+                    
+                    <TextBlock FontSize="22" FontWeight="Bold" Text="Staff Member Details" Margin="10" HorizontalAlignment="Center"/>
+
+                    <TextBlock FontWeight="Bold" Text="Staff Role"  Margin="5, 10, 5, 1"/>
+                    <ComboBox ItemsSource="{Binding }"
+                              SelectedItem="{Binding }"
+                              PlaceholderText="..."
+                              HorizontalAlignment="Stretch"/>
+                    
+                    <!-- not sure if needed - probably but may be altered-->
+                    <TextBlock Name="ErrorTextBlock" Foreground="Red" HorizontalAlignment="Center"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Staff ID - ???" Margin="5, 0, 5, 1"/>
+                    <!--<TextBox Name="ForenameTextBox" Text="{Binding }"/>-->
+                    
+                    <TextBlock FontWeight="Bold" Text="Concern Description" Margin="5, 10, 5, 1"/>
+                    <TextBox Name="ConcernDescriptionTextBox" Height="100" HorizontalAlignment="Stretch" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding }"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Email" Margin="5, 10, 5, 1"/>
+                    <TextBox Name="EmailTextBox" Text="{Binding }"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Contact Number" Margin="5, 10, 5, 1"/>
+                    <TextBox Name="ContactNumberTextBox" Text="{Binding }"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Password"  Margin="5, 10, 5, 1"/>
+                    <TextBox Name="PasswordBox" PasswordChar="" Text="{Binding }"/>
+
+                    
+                    <Button Content="Create Account" HorizontalAlignment="Center" Margin="15" Command="{Binding }"></Button>
+                    
+                </StackPanel>
+            </Border>
+        </Canvas>
+        
+    </Grid>
  
     </StackPanel>
 </UserControl>
 
+
+<!--             CREATE TABLE IF NOT EXISTS SafeguardingReports (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            reporter_id INTEGER NOT NULL,
+            concern_description TEXT NOT NULL,
+            date_reported DATETIME DEFAULT CURRENT_TIMESTAMP,
+            status TEXT CHECK(status IN ('Open', 'Under Review', 'Resolved')) NOT NULL DEFAULT 'Open',
+            assigned_staff INTEGER DEFAULT NULL,
+            FOREIGN KEY (reporter_id) REFERENCES Users(id),
+            FOREIGN KEY (assigned_staff) REFERENCES Users(id)
+            )" -->
