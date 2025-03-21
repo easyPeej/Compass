@@ -18,6 +18,7 @@
         <entry key="Views/ReportsView.axaml" value="Compass.fsproj" />
         <entry key="Views/SecondView.axaml" value="Compass.fsproj" />
         <entry key="Views/TemplatedControl1.axaml" value="Compass.fsproj" />
+        <entry key="Views/ViewChildDataUC.axaml" value="Compass.fsproj" />
         <entry key="Views/Window1.axaml" value="Compass.fsproj" />
         <entry key="Views/second.axaml" value="Compass.fsproj" />
       </map>

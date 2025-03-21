@@ -28,4 +28,10 @@ module Staff =
                Permissions = "Standard" |}
               
         connection.Execute(query, parameters) |> ignore
-
+        
+        
+    let FetchStaff() =
+        use connection = DbConnect.GetConnection()
+        let query = "SELECT first_name || ' ' || last_name FROM Users"
+        connection.Query<string>(query)
+        |> Seq.toList

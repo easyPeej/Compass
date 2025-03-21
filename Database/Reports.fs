@@ -25,5 +25,51 @@ module Reports =
             use connection = DbConnect.GetConnection()
             let query = "SELECT keyword FROM Keywords"
             connection.Query<string>(query)
-            |> Seq.toList 
+            |> Seq.toList
             
+        let FetchChildrenNames() =
+            use connection = DbConnect.GetConnection()
+            let query = "SELECT first_name || ' ' || last_name FROM Children"
+            connection.Query<string>(query)
+            |> Seq.toList
+        
+        // WIP    
+        let FetchByChildId(id) =
+            use connection = DbConnect.GetConnection()
+            let query = "SELECT first_name || ' ' || last_name FROM Children WHERE Id = @Id"
+            let parameters =
+                {|
+                  Id = id
+                  |}
+            
+            connection.Query<string>(query, parameters)
+            |> Seq.toList
+            
+            
+        let CreateNewReport(reporterId, concernDescription, status, assignedStaffId, childId) =
+            use connection = DbConnect.GetConnection()
+            let query = "INSERT INTO SafeguardingReports (
+            reporter_id, concern_description, status, assigned_staff, child_id)
+            VALUES (@ReporterId, @ConcernDescription, @Status, @AssignedStaff, @ChildId)"
+            
+            let parameters =
+                {|
+                    ReporterId =  reporterId
+                    ConcernDescription = concernDescription
+                    Status = status
+                    AssignedStaff = assignedStaffId
+                    ChildId = childId
+                |}
+                
+            connection.Execute(query, parameters)
+            
+            
+        let FetchChildData(id) =
+            use connection = DbConnect.GetConnection()
+            let query = "SELECT * FROM Children WHERE id = @Id"
+            
+            let parameters =
+                {| Id = id |}
+            
+            connection.Query<ChildData>(query, parameters)
+            |> Seq.toList

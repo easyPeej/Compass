@@ -53,7 +53,11 @@ type MainWindow () as this =
         
     member this.AddMember(sender: obj, e: RoutedEventArgs) =
         let addStaff = new NewStaffFormView()
-        this.NavigateToPage(addStaff)        
+        this.NavigateToPage(addStaff)
+        
+    member this.ChildData(sender: obj, e: RoutedEventArgs) =
+          let childData = new ViewChildDataUC()
+          this.NavigateToPage(childData)    
         
         
     member private this.InitializeComponent() =

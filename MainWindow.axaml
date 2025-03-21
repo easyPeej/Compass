@@ -27,9 +27,9 @@
             <Image Source="{SvgImage /Assets/Images/logo.svg}"></Image> 
                     
             <Button Content="Dashboard" HorizontalAlignment="Stretch" Click="Dashboard"></Button>
-            <Button Content="Reporting" HorizontalAlignment="Stretch" Click="Reporting"></Button>
+            <Button Content="New Report" HorizontalAlignment="Stretch" Click="Reporting"></Button>
             <Button Content="Add Staff" HorizontalAlignment="Stretch" Click="AddMember"></Button>
-            <Button Content="..." HorizontalAlignment="Stretch"></Button>
+            <Button Content="Test child data" HorizontalAlignment="Stretch" Click="ChildData"></Button>
             <Button Content="..." HorizontalAlignment="Stretch"></Button>
             <Button Content="..." HorizontalAlignment="Stretch"></Button>
             <Button Content="Logout" Click="LogoutButton" IsVisible="{Binding isLoggedInCheck}"></Button>

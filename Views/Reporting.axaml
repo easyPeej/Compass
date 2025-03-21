@@ -24,32 +24,33 @@
                     
                     <TextBlock FontSize="22" FontWeight="Bold" Text="Create new safeguard report" Margin="10" HorizontalAlignment="Center"/>
 
-                    <TextBlock FontWeight="Bold" Text="Report Keywords"  Margin="5, 10, 5, 1"/>
+                    <TextBlock FontWeight="Bold" Text="Child Name"  Margin="5, 10, 5, 1"/>
+                    <ComboBox ItemsSource="{Binding ChildrenNames}"
+                              SelectedItem="{Binding SelectedKeyword}"
+                              PlaceholderText="..."
+                              HorizontalAlignment="Stretch"/>
+                    
+                    <TextBlock FontWeight="Bold" Text="Case Keywords"  Margin="5, 10, 5, 1"/>
                     <ComboBox ItemsSource="{Binding AllKeywords}"
                               SelectedItem="{Binding SelectedKeyword}"
                               PlaceholderText="..."
                               HorizontalAlignment="Stretch"/>
                     
+
                     <!-- not sure if needed - probably but may be altered-->
                     <TextBlock Name="ErrorTextBlock" Foreground="Red" HorizontalAlignment="Center"/>
                     
-                    <TextBlock FontWeight="Bold" Text="Staff ID - ???" Margin="5, 0, 5, 1"/>
-                    <!--<TextBox Name="ForenameTextBox" Text="{Binding }"/>-->
+                    <TextBlock FontWeight="Bold" Text="Concern Description" Margin="5, 5, 5, 1"/>
+                    <TextBox Name="ConcernDescriptionTextBox" Height="100" HorizontalAlignment="Stretch" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding ReportConcernText}"/>
                     
-                    <TextBlock FontWeight="Bold" Text="Concern Description" Margin="5, 10, 5, 1"/>
-                    <TextBox Name="ConcernDescriptionTextBox" Height="100" HorizontalAlignment="Stretch" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding }"/>
-                    
-                    <TextBlock FontWeight="Bold" Text="Email" Margin="5, 10, 5, 1"/>
-                    <TextBox Name="EmailTextBox" Text="{Binding }"/>
-                    
-                    <TextBlock FontWeight="Bold" Text="Contact Number" Margin="5, 10, 5, 1"/>
-                    <TextBox Name="ContactNumberTextBox" Text="{Binding }"/>
-                    
-                    <TextBlock FontWeight="Bold" Text="Password"  Margin="5, 10, 5, 1"/>
-                    <TextBox Name="PasswordBox" PasswordChar="" Text="{Binding }"/>
+                    <TextBlock FontWeight="Bold" Text="Assign Staff"  Margin="5, 10, 5, 1"/>
+                    <ComboBox ItemsSource="{Binding StaffNames}"
+                              SelectedItem="{Binding SelectedKeyword}"
+                              PlaceholderText="..."
+                              HorizontalAlignment="Stretch"/>
 
                     
-                    <Button Content="Create Account" HorizontalAlignment="Center" Margin="15" Command="{Binding }"></Button>
+                    <Button Content="Publish Report" HorizontalAlignment="Center" Margin="15"></Button>
                     
                 </StackPanel>
             </Border>
@@ -59,15 +60,3 @@
  
     </StackPanel>
 </UserControl>
-
-
-<!--             CREATE TABLE IF NOT EXISTS SafeguardingReports (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            reporter_id INTEGER NOT NULL,
-            concern_description TEXT NOT NULL,
-            date_reported DATETIME DEFAULT CURRENT_TIMESTAMP,
-            status TEXT CHECK(status IN ('Open', 'Under Review', 'Resolved')) NOT NULL DEFAULT 'Open',
-            assigned_staff INTEGER DEFAULT NULL,
-            FOREIGN KEY (reporter_id) REFERENCES Users(id),
-            FOREIGN KEY (assigned_staff) REFERENCES Users(id)
-            )" -->

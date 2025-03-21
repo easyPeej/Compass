@@ -1,12 +1,13 @@
-﻿namespace Compass.Views 
+﻿namespace Compass.Views
 
 open Avalonia.Controls
 open Avalonia.Interactivity
 open Avalonia.Markup.Xaml
+open Compass.Database.Reports
 open Compass.ViewModels
 
 
-type ReportsUserControl() as this =
+type ViewChildDataUC() as this =
     inherit UserControl()
     
     let viewModel = ReportsViewModel()
@@ -21,3 +22,4 @@ type ReportsUserControl() as this =
         let button = sender :?> Button
         let childId = button.Tag :?> int
         printf $"Viewing child id: {childId}"
+        
