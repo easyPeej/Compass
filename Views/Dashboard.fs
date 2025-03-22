@@ -14,7 +14,7 @@ type Dashboard() as this =
         this.DataContext <- DashboardViewModel()
         
         // For ReportsUserControl
-        let reportsControl = new ReportsUserControl()
+        let reportsControl = new ReportsUC()
         let Panel = this.FindControl<StackPanel>("ContainerPanel")
         Panel.Children.Add(reportsControl)
     

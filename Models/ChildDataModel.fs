@@ -1,6 +1,6 @@
 ﻿namespace Compass.Models
 
-type [<CLIMutable>] ChildData =
+type [<CLIMutable>] ChildDataModel =
     {
         Id: int
         FirstName: string

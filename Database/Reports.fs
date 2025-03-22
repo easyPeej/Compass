@@ -71,5 +71,5 @@ module Reports =
             let parameters =
                 {| Id = id |}
             
-            connection.Query<ChildData>(query, parameters)
+            connection.Query<ChildDataModel>(query, parameters)
             |> Seq.toList

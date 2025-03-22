@@ -1,13 +1,17 @@
 ﻿namespace Compass.Views
 
+open System.Collections.ObjectModel
 open Avalonia.Controls
+open Avalonia.Controls.Primitives
 open Avalonia.Interactivity
 open Avalonia.Markup.Xaml
 open Compass.Database.Reports
+open Compass.Models
 open Compass.ViewModels
+open Microsoft.FSharp.Core
 
 
-type ViewChildDataUC() as this =
+type ViewChildDataUC(childId: int) as this =
     inherit UserControl()
     
     let viewModel = ReportsViewModel()
@@ -15,11 +19,6 @@ type ViewChildDataUC() as this =
     do
         AvaloniaXamlLoader.Load(this)
         this.DataContext <- viewModel
-        viewModel.LoadAllReports()
+        viewModel.FetchChildDataById(childId)
         
-        
-    member this.ViewChildDataClick(sender: obj, e: RoutedEventArgs) =
-        let button = sender :?> Button
-        let childId = button.Tag :?> int
-        printf $"Viewing child id: {childId}"
-        
+    member val ChildDataById = ObservableCollection<ChildDataModel>() with get, set

@@ -9,28 +9,19 @@
     
     
     <StackPanel>
-        <ListBox ItemsSource="{Binding FullReport}" Margin="5" Background="LightSteelBlue" MaxHeight="494" Width="400" CornerRadius="5">
+        <ListBox ItemsSource="{Binding ChildDataById}" Margin="5" Background="LightSteelBlue" MaxHeight="494" Width="400" CornerRadius="5">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                             <TextBlock Text="Child ID Num: " FontWeight="Bold" />
-                            <TextBlock Text="{Binding child_id}" />
+                            <TextBlock Text="{Binding Id}" />
                             <TextBlock Text="Report Concern: " FontWeight="Bold" />
-                            <TextBlock Text="{Binding concern_description}" />
+                            <TextBlock Text="{Binding FirstName}" />
                             <TextBlock Text="Status: " FontWeight="Bold"/>
-                            <TextBlock Text="{Binding status}" />
+                            <TextBlock Text="{Binding LastName}" />
                             <TextBlock Text="Time &amp; Date Published: " FontWeight="Bold"/>
-                            <TextBlock Text="{Binding date_reported}" />
-                            
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <TextBlock Text="Update Report" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                                <Button Content="->" FontSize="13" Margin="0,5,0,0" HorizontalAlignment="Right" MaxHeight="30" MaxWidth="30"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <TextBlock Text="View Child Details" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                                <Button Content="->" FontSize="13" Margin="0,5,0,0" HorizontalAlignment="Right" MaxHeight="30" MaxWidth="30"
-                                        Click="ViewChildDataClick" Tag="{Binding child_id}"/>
-                            </StackPanel>
+                            <TextBlock Text="{Binding LastName}" />
+                        
                             <Separator Margin="5, 10"/>
 
                     </StackPanel>
@@ -39,3 +30,14 @@
         </ListBox>
     </StackPanel>
 </UserControl>
+
+
+<!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Text="Update Report" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                                <Button Content="->" FontSize="13" Margin="0,5,0,0" HorizontalAlignment="Right" MaxHeight="30" MaxWidth="30"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Text="View Child Details" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                                <Button Content="->" FontSize="13" Margin="0,5,0,0" HorizontalAlignment="Right" MaxHeight="30" MaxWidth="30"
+                                         Tag="{Binding child_id}"/>
+                            </StackPanel>-->

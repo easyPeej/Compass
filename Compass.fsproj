@@ -13,7 +13,7 @@
         <Compile Include="Models\UserModel.fs" />
         <Compile Include="Models\NewStaffModel.fs" />
         <Compile Include="Models\KeywordsModel.fs" />
-        <Compile Include="Models\ChildData.fs" />
+        <Compile Include="Models\ChildDataModel.fs" />
         <Compile Include="Services\UserSession.fs" />
         <Compile Include="Models\ReportsModel.fs" />
         <Compile Include="Database\Reports.fs" />
@@ -22,8 +22,8 @@
         <Compile Include="ViewModels\ReportsViewModel.fs" />
         <Compile Include="ViewModels\MainWindowViewModel.fs" />
         <Compile Include="ViewModels\NewStaffFormViewModel.fs" />
-        <Compile Include="Views\ReportsUserControl.fs" />
         <Compile Include="Views\ViewChildDataUC.fs" />
+        <Compile Include="Views\ReportsUC.fs" />
         <Compile Include="ViewModels\DashboardViewModel.fs" />
         <Compile Include="Views\SecondView.fs" />
         <Compile Include="Views\FirstView.fs" />

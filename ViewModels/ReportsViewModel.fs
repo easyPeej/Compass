@@ -18,8 +18,9 @@ type ReportsViewModel() as this =
     let mutable assigned_staff = 0L
     let mutable selectedReport: SafeguardingReports option = None
     let mutable status = ""
-    let mutable childInformation = ObservableCollection<ChildData>()
+    let mutable childInformation = ObservableCollection<ChildDataModel>()
     
+
     // for display / creating reports
     let mutable allKeywords = ObservableCollection<string>()
     let mutable selectedKeyword: string option = None
@@ -37,7 +38,7 @@ type ReportsViewModel() as this =
         this.FetchKeywords()
         this.FetchChildren()
         this.FetchStaff()
-        
+        this.FetchChildDataById(1)
        
         match UserSession.UserSession with
         | Some user ->
@@ -115,8 +116,8 @@ type ReportsViewModel() as this =
         and set value =
             reportConcernText <- value
             this.RaisePropertyChanged()
-            
-            
+
+           
             
     // Methods bellow         
     
@@ -167,7 +168,7 @@ type ReportsViewModel() as this =
        
     member this.FetchChildDataById(id) =
         let data = FetchChildData id
-        this.ChildDataById <- ObservableCollection<ChildData>(data |> List.toSeq)
+        this.ChildDataById <- ObservableCollection<ChildDataModel>(data |> List.toSeq)
         
         
     // Testing 

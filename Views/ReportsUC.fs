@@ -1,12 +1,13 @@
 ﻿namespace Compass.Views 
 
 open Avalonia.Controls
+open Avalonia.Controls.Primitives
 open Avalonia.Interactivity
 open Avalonia.Markup.Xaml
 open Compass.ViewModels
 
 
-type ReportsUserControl() as this =
+type ReportsUC() as this =
     inherit UserControl()
     
     let viewModel = ReportsViewModel()
@@ -17,7 +18,13 @@ type ReportsUserControl() as this =
         viewModel.LoadAllReports()
         
         
-    member this.ViewChildDataClick(sender: obj, e: RoutedEventArgs) =
+    member this.LoadChildData(sender: obj, e: RoutedEventArgs) =
         let button = sender :?> Button
-        let childId = button.Tag :?> int
-        printf $"Viewing child id: {childId}"
+        match button.Tag with
+        | :? int as childId ->
+            let childView = new ViewChildDataUC(childId)
+            this.Content <- childView
+        | _ -> printfn "invalid child id"
+        
+        
+
