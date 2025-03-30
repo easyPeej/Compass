@@ -166,8 +166,10 @@ module Database =
             printfn "ReportKeywords already exist, skipping insert."
             
             
+        
+
             
-                // Inserting dummy safeguarding data
+        // Inserting dummy safeguarding data
         let sgCount: int = connection.ExecuteScalar<int>("SELECT COUNT(*) FROM SafeguardingReports")
         
         if sgCount = 0 then

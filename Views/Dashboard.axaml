@@ -5,45 +5,75 @@
              xmlns:local="clr-namespace:Compass.Views"
              xmlns:vm="clr-namespace:Compass.ViewModels"
              x:DataType="vm:DashboardViewModel"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="970" d:DesignHeight="700"
              x:Class="Compass.Views.Dashboard">
+    
+    
     <StackPanel>
         
         <DockPanel>
             <local:BannerTemplate/>
         </DockPanel>
         
-        <Grid Margin="5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            
-            
-            
-            <Border Background="LightSteelBlue" CornerRadius="5" Margin="0,0,10,0" HorizontalAlignment="Left" Padding="0" MaxHeight="620">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="10" Opacity="0.4" Color="#222831"/>
-                </Border.Effect>
+            <Grid Margin="10" RowDefinitions="*" ColumnDefinitions="*">
+    
+                <Border Background="LightSteelBlue" CornerRadius="5" Margin="0,0,10,0" HorizontalAlignment="Left" MaxHeight="620">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" Opacity="0.4" Color="#222831"/>
+                    </Border.Effect>
+                    
+                    <StackPanel x:Name="ContainerPanel">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto"/>
+                    </StackPanel>
+                </Border> 
                 
-                <StackPanel>
-                    <Border Background="#222831" Height="25" VerticalAlignment="Top" CornerRadius="5, 5, 0, 0">
-                        <TextBlock Text="Assigned Cases" FontSize="14" Foreground="WhiteSmoke" VerticalAlignment="Center" Padding="8,0,0,0"></TextBlock>
-                    </Border>
+                <Grid RowDefinitions="150" ColumnDefinitions="500" HorizontalAlignment="Right">
+    
+                    <!-- can fill space to the right TOP here -->
                     
+                    <Border Background="LightSteelBlue" CornerRadius="5" Margin="0,0,10,0" HorizontalAlignment="Stretch" MaxHeight="620">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.4" Color="#222831"/>
+                        </Border.Effect>
+                        
+                        <StackPanel x:Name="ContainerPanel2">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto"/>
+                        </StackPanel>
+                    </Border> 
                     
+                </Grid>
+                
+                <Grid RowDefinitions="150" ColumnDefinitions="500" HorizontalAlignment="Right" VerticalAlignment="Center">
+    
+                    <!-- can fill space to the right MIDDLE here -->
                     
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel x:Name="ContainerPanel"/>
-                    </ScrollViewer>
-                </StackPanel>
-            </Border>
-            
-            <!--<StackPanel x:Name="ContainerPanel"/>-->
-            
-        </Grid>
+                    <Border Background="LightSteelBlue" CornerRadius="5" Margin="0,0,10,0" HorizontalAlignment="Stretch" MaxHeight="620">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.4" Color="#222831"/>
+                        </Border.Effect>
+                        
+                        <StackPanel x:Name="ContainerPanel3">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto"/>
+                        </StackPanel>
+                    </Border> 
+                    
+                </Grid>
+                <Grid RowDefinitions="150" ColumnDefinitions="500" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+    
+                    <!-- can fill space to the right MIDDLE here -->
+                    
+                    <Border Background="LightSteelBlue" CornerRadius="5" Margin="0,0,10,0" HorizontalAlignment="Stretch" MaxHeight="620">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.4" Color="#222831"/>
+                        </Border.Effect>
+                        
+                        <StackPanel x:Name="ContainerPanel4">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto"/>
+                        </StackPanel>
+                    </Border> 
+                    
+                </Grid>
+            </Grid>
     </StackPanel>
 </UserControl>
 

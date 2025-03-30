@@ -1,38 +1,86 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:views="clr-namespace:Compass.Views;assembly=Compass"
+             xmlns:local="clr-namespace:Compass.Services;assembly=Compass"
              xmlns:vm="clr-namespace:Compass.ViewModels"
              x:DataType="vm:ReportsViewModel"
              x:Class="Compass.Views.ReportsUC">
     
+    <UserControl.Resources>
+        <local:OptionStringConverter x:Key="OptionStringConverter"/>
+    </UserControl.Resources>
+    
     <StackPanel>
+        
+        <Border Background="#222831" Height="25" VerticalAlignment="Top" CornerRadius="5, 5, 0, 0" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal">
+            <TextBlock Text="All Reports" FontSize="14" Foreground="WhiteSmoke" VerticalAlignment="Center" Padding="8,0,0,0"></TextBlock>
+
+            </StackPanel>
+        </Border>
         <ListBox ItemsSource="{Binding FullReport}" Margin="5" Background="LightSteelBlue" MaxHeight="494" Width="400" CornerRadius="5">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                            <TextBlock Text="Child ID Num: " FontWeight="Bold" />
-                            <TextBlock Text="{Binding child_id}" />
-                            <TextBlock Text="Report Concern: " FontWeight="Bold" />
-                            <TextBlock Text="{Binding concern_description}" />
-                            <TextBlock Text="Status: " FontWeight="Bold"/>
-                            <TextBlock Text="{Binding status}" />
-                            <TextBlock Text="Time &amp; Date Published: " FontWeight="Bold"/>
-                            <TextBlock Text="{Binding date_reported}" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" /> 
+                                <ColumnDefinition Width="Auto" /> 
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
                             
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <TextBlock Text="Update Report" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                                <Button Content="->" FontSize="13" Margin="0,5,0,0" HorizontalAlignment="Right" MaxHeight="30" MaxWidth="30"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/> 
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 0, 0">
+                                <TextBlock Text="Report ID No: " FontWeight="UltraLight"/>
+                                <TextBlock Text="{Binding id}" FontWeight="UltraLight"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                
-                                <TextBlock Text="View Child Details" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                                
-                                <Button Content="->" FontSize="13" Margin="0,5,0,0" HorizontalAlignment="Right" Height="30" Width="30"
+                            
+                            <Separator Grid.Row="0" Grid.Column="0" Margin="5, 20" Height="1"/>
+                             
+                            <StackPanel Grid.Row="1" Grid.Column="0">   
+                                <TextBlock Text="Child (ID No): " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding child_id}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Report Concern: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding concern_description}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Status: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding status}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Time &amp; Date Published: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding date_reported}" TextWrapping="Wrap"/>
+                            </StackPanel> 
+                            
+                            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left">
+                                <TextBlock Text="Reported by (ID No): " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding reporter_id}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Assigned to (ID No): " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding assigned_staff, Converter={StaticResource OptionStringConverter}}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Severity: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding severity}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Notified Social Services? " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding raised_to_social_care}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            
+                            <!-- Selected Report -->
+                            <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0,20,0,0">
+                                <TextBlock Text="Update Report" VerticalAlignment="Center" Margin="0,0,5,0" />
+                                <Button Content="->" FontSize="13" HorizontalAlignment="Right" Height="30" Width="30"
+                                         Click="LoadUpdateReport" Tag="{Binding id}"/>
+                            </StackPanel>
+                            
+                            <!-- ChildDataById -->
+                            <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                                <TextBlock Text="View Child Details" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                <Button Content="->" FontSize="13" HorizontalAlignment="Right" Height="30" Width="30" 
                                         Click="LoadChildData" Tag="{Binding child_id}"/>
-                                
                             </StackPanel>
-                            <Separator Margin="5, 10"/>
-
+                        </Grid>
+                        
+    
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

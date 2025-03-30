@@ -59,25 +59,26 @@ type LoginViewModel() =
         else
             use connection = DbConnect.GetConnection()
 
+            //////////////////////////////////////////////////////////////////////////////// NEEDS SECURING /////////////////////////////////////////////
+            
             let sql = "SELECT * FROM Users WHERE email = @Email"
             let result =
                 connection.Query<User>(sql, {| Email = this.Email |})
                 |> Seq.tryHead
-                             
+
+            //////////////////////////////////////////////////////////////////////////////// NEEDS SECURING /////////////////////////////////////////////                                
             match result with
             | None ->
                 this.ErrorMessage <- "Invalid email or password." 
                 false
             | Some user ->
-                if BCrypt.Verify(this.Password, user.password_hash) then
+                if BCrypt.Verify(this.Password.Trim(), user.password_hash.Trim()) then
                     UserSession.UserSession <- Some user
                     this.ErrorMessage <- ""
-                    
-                    
                     // Using the session tester method
                     this.CheckSession()
                     true
                 else
-                    this.ErrorMessage <- "Invalid email or password."
+                    this.ErrorMessage <- "Invalid email or password. here"
                     false
                     

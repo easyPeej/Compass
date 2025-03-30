@@ -19,7 +19,7 @@
             <ColumnDefinition Width="*"/>    <!-- Rest for views -->
         </Grid.ColumnDefinitions>
 
-        <!-- Navigation Panel (Left Side) -->
+        <!-- nav panel -->
     <Border Background="{DynamicResource 
     PrimaryBackgroundGradient}" Padding="5, 5, 10, 5"
             >   
@@ -27,9 +27,9 @@
             <Image Source="{SvgImage /Assets/Images/logo.svg}"></Image> 
                     
             <Button Content="Dashboard" HorizontalAlignment="Stretch" Click="Dashboard"></Button>
-            <Button Content="New Report" HorizontalAlignment="Stretch" Click="Reporting"></Button>
+            <Button Content="Create Report" HorizontalAlignment="Stretch" Click="Reporting"></Button>
             <Button Content="Add Staff" HorizontalAlignment="Stretch" Click="AddMember"></Button>
-            <Button Content="..." HorizontalAlignment="Stretch"></Button>
+            <Button Content="Test: update report" HorizontalAlignment="Stretch" Click="UpdateReport"></Button>
             <Button Content="..." HorizontalAlignment="Stretch"></Button>
             <Button Content="Logout" Click="LogoutButton" IsVisible="{Binding isLoggedInCheck}"></Button>
 
@@ -37,8 +37,10 @@
     </Border>    
         
 
-        <!-- Content Area (Takes remaining space) -->
-        <ContentControl Name="MainContent" Grid.Column="1"/>
+        <!-- main content area -->
+        <Viewbox Grid.Column="1" Stretch="UniformToFill">
+            <ContentControl Height="700" Width="970" Name="MainContent" Grid.Column="1"/>
+        </Viewbox>
     </Grid>
     
 </Window>

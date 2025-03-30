@@ -2,7 +2,7 @@
 
 type [<CLIMutable>] User =
     {
-        id: int64
+        id: int
         first_name: string
         last_name: string
         email: string

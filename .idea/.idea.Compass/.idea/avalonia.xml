@@ -7,18 +7,21 @@
         <entry key="MainWindow.axaml" value="Compass.fsproj" />
         <entry key="Styles/Styles1.axaml" value="Compass.fsproj" />
         <entry key="Views/BannerTemplate.axaml" value="Compass.fsproj" />
+        <entry key="Views/ChildInfoUC.axaml" value="Compass.fsproj" />
         <entry key="Views/Dashboard.axaml" value="Compass.fsproj" />
         <entry key="Views/FirstView.axaml" value="Compass.fsproj" />
         <entry key="Views/LoginPage.axaml" value="Compass.fsproj" />
         <entry key="Views/LoginView.axaml" value="Compass.fsproj" />
         <entry key="Views/NavTemplate.axaml" value="Compass.fsproj" />
         <entry key="Views/NewStaffFormView.axaml" value="Compass.fsproj" />
+        <entry key="Views/ReportCountUC.axaml" value="Compass.fsproj" />
         <entry key="Views/Reporting.axaml" value="Compass.fsproj" />
         <entry key="Views/ReportsUC.axaml" value="Compass.fsproj" />
         <entry key="Views/ReportsUserControl.axaml" value="Compass.fsproj" />
         <entry key="Views/ReportsView.axaml" value="Compass.fsproj" />
         <entry key="Views/SecondView.axaml" value="Compass.fsproj" />
         <entry key="Views/TemplatedControl1.axaml" value="Compass.fsproj" />
+        <entry key="Views/UpdateReport.axaml" value="Compass.fsproj" />
         <entry key="Views/ViewChildDataUC.axaml" value="Compass.fsproj" />
         <entry key="Views/Window1.axaml" value="Compass.fsproj" />
         <entry key="Views/second.axaml" value="Compass.fsproj" />

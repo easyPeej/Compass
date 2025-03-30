@@ -21,7 +21,7 @@ type MainWindow () as this =
             let dashboard = new Dashboard()
             this.FindControl<ContentControl>("MainContent").Content <- dashboard)
     
-        
+    // need to implement patern match to check user session is active for use of the nav bar    
     // method for switching user content in the main window
     member this.NavigateToPage(page: UserControl) =
         match this.VisualRoot with
@@ -55,7 +55,9 @@ type MainWindow () as this =
         let addStaff = new NewStaffFormView()
         this.NavigateToPage(addStaff)
         
-   
+    member this.UpdateReport(sender: obj, e: RoutedEventArgs) =
+        let updateReport = new UpdateReport(0)
+        this.NavigateToPage(updateReport)
         
         
     member private this.InitializeComponent() =

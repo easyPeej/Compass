@@ -3,17 +3,17 @@
 type [<CLIMutable>] ChildDataModel =
     {
         Id: int
-        FirstName: string
-        LastName: string
-        DateOfBirth: System.DateTime
-        Gender: string
-        Address: string
-        School: string option  
-        EmergencyContact: string
-        SocialWorker: string option  
-        RiskLevel: string
-        MedicalNotes: string option  
-        SafeguardingNotes: string option  
+        first_name: string
+        last_name: string
+        date_of_birth: System.DateTime
+        gender: string
+        address: string
+        school: string option  
+        emergency_contact: string
+        social_worker: string option  
+        risk_level: string
+        medical_notes: string option  
+        safeguarding_notes: string option  
     }
 
 

@@ -8,6 +8,10 @@ type [<CLIMutable>] SafeguardingReports =
         date_reported: System.DateTime
         status: string
         assigned_staff: int64 option
-        child_id: int 
+        child_id: int
+        severity: string
+        raised_to_social_care: bool
     }
+    
+        
 

@@ -20,6 +20,11 @@ type UserSession private () =
             userSession <- value
             LoggedIn <- value.IsSome
             sessionChanged.Trigger()
+            
+    static member GetUserId() =
+        match userSession with
+        | Some user -> Some user.id
+        | None -> None
 
     
     static member Logout() =

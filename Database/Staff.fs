@@ -35,3 +35,6 @@ module Staff =
         let query = "SELECT first_name || ' ' || last_name FROM Users"
         connection.Query<string>(query)
         |> Seq.toList
+        
+                 
+        

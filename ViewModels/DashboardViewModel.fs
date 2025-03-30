@@ -11,6 +11,7 @@ type public DashboardViewModel() =
     let mutable firstName = ""
     let mutable lastName = ""
     let mutable role = ""
+    let mutable id: int64 = 0
     
     
     do
@@ -19,10 +20,18 @@ type public DashboardViewModel() =
             firstName <- user.first_name
             lastName <- user.last_name
             role <- user.role
+            id <- user.id
         | None ->
             firstName <- ""
             lastName <- ""
             role <- ""
+            id <- 0
+            
+    member this.Id
+        with get() = id
+        and set value =
+            id <- value
+            this.RaisePropertyChanged()
             
     member this.FirstName
         with get() = firstName

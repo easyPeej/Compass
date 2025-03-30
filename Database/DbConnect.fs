@@ -4,13 +4,17 @@ open Dapper
 open Microsoft.Data.Sqlite
 
 module DbConnect =
+    
+    // set variable to avoid hardcoding source inside the function 
+    let private connString = "Data Source=Data.db"
+    
     // opens our database
     let GetConnection() =
-        let connection = new SqliteConnection("Data Source=Data.db")
-        connection.Open()
-        connection
-    
-    
-   // closes our database - mostly redundant due to 'use' cleaning up when out of scope, but nice to have
-    let CloseConnection(connection: SqliteConnection) =
-        connection.Close()
+        try
+            let connection = new SqliteConnection(connString)
+            connection.Open()
+            connection
+        with
+        | ex ->
+            printfn $"Database connection failed: %s{ex.Message}"
+            raise ex
