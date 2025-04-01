@@ -14,6 +14,16 @@ module Reports =
             let query = "SELECT * FROM SafeguardingReports"
             connection.Query<SafeguardingReports>(query)
             |> Seq.toList
+            
+        let CountReports() =
+            use connection = DbConnect.GetConnection()
+            let query = "SELECT COUNT(*) FROM SafeguardingReports"
+            connection.ExecuteScalar<int>(query)
+            
+        let CountReportsByStatus(status: string) =
+            use connection = DbConnect.GetConnection()
+            let query = "SELECT COUNT(*) FROM SafeguardingReports WHERE status = @Status"
+            connection.ExecuteScalar<int>(query, {| Status = status |})
         
         // Fetches assigned reports - parameter assigned_staff (their id no.)    
         let FetchReportsByAssigned (assigned_staff) =

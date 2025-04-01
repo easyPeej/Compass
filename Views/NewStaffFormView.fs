@@ -16,6 +16,7 @@ type NewStaffFormView() as this =
         this.InitializeComponent()
         // also may not be needed
         this.DataContext <- viewModel
+        
 
     member private this.InitializeComponent() =
         AvaloniaXamlLoader.Load(this)

@@ -1,0 +1,83 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             
+             xmlns:vm="clr-namespace:Compass.ViewModels"
+             xmlns:local="clr-namespace:Compass.Services;assembly=Compass"
+             x:DataType="vm:UsersViewModel"
+             x:Class="Compass.Views.ViewUsersUC">
+                
+    <UserControl.Resources>
+        <local:OptionStringConverter x:Key="OptionStringConverter"/>
+    </UserControl.Resources>    
+    
+    <StackPanel>
+        
+            <Border Background="#222831" Height="25" VerticalAlignment="Top" CornerRadius="5, 5, 0, 0" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Staff Details" FontSize="14" Foreground="WhiteSmoke" VerticalAlignment="Center" Padding="8,0,0,0"></TextBlock>
+
+            </StackPanel>
+        </Border>
+        <ListBox ItemsSource="{Binding AllStaffDetails}" Margin="5" Background="LightSteelBlue" MaxHeight="494" Width="400" CornerRadius="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" /> 
+                                <ColumnDefinition Width="Auto" /> 
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/> 
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 0, 0">
+                                <TextBlock Text="Account ID: " FontWeight="UltraLight"/>
+                                <TextBlock Text="{Binding id}" FontWeight="UltraLight"/>
+                            </StackPanel>
+                            
+                            <Separator Grid.Row="0" Grid.Column="0" Margin="5, 20" Height="1"/>
+                             
+                            <StackPanel Grid.Row="1" Grid.Column="0">
+                                <TextBlock Text="First Name: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding first_name}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Last Name: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding last_name}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Role: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding role}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Email Address: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding email}" TextWrapping="Wrap"/>
+                            </StackPanel> 
+                            
+                            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left">
+                                <TextBlock Text="Contact Number: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding phone, Converter={StaticResource OptionStringConverter}}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Last Login: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding last_login, Converter={StaticResource OptionStringConverter}}" TextWrapping="Wrap"/>
+                                <TextBlock Text="User Status: " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding status}" TextWrapping="Wrap"/>
+                                <TextBlock Text="Account Permissions " FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding permissions}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            
+                            
+                            <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                                <TextBlock Text="Update Staff Details" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                <Button Content="->" FontSize="13" HorizontalAlignment="Right" Height="30" Width="30" />
+                            </StackPanel>
+                        </Grid>
+                        
+    
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</UserControl>

@@ -1,14 +1,17 @@
 ﻿namespace Compass.Services
 
-open System
+
+open Avalonia.Controls
+open Avalonia.Controls.ApplicationLifetimes
 open Compass.Models
+
 
 type UserSession private () =
     static let mutable userSession: User option = None
     
     // using LoggedIn to detect whether user is logged in or not for certain UI elements
     // THIS NEEDS SOME SERIOUS WORK FGS
-    static let mutable LoggedIn = true
+    static let mutable LoggedIn = false
     static let sessionChanged = Event<unit>()
     static member UserSessionChanged = sessionChanged.Publish
     static member LoggedInCheck
@@ -31,6 +34,7 @@ type UserSession private () =
         userSession <- None
         LoggedIn <- false
         sessionChanged.Trigger()
+        
         
         
         

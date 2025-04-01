@@ -12,5 +12,7 @@ type ReportCountUC() as this =
     do
         AvaloniaXamlLoader.Load(this)
         this.DataContext <- viewModel
-
-        
+        viewModel.FetchReportCount()
+        viewModel.FetchReportCountByStatus("Open")
+        viewModel.FetchReportCountByStatus("Resolved")
+        viewModel.FetchReportCountByStatus("Under Review")

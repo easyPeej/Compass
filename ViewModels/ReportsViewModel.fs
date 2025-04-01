@@ -13,7 +13,9 @@ type ReportsViewModel() as this =
     
     
     // Read reports 
-    let mutable fullReport = ObservableCollection<SafeguardingReports>() 
+    let mutable fullReport = ObservableCollection<SafeguardingReports>()
+    let mutable reportCount = 0
+    let mutable reportCountByStatus = 0
     
     // assigned staff id - not report id
     let mutable reportById = ObservableCollection<SafeguardingReports>()
@@ -96,16 +98,29 @@ type ReportsViewModel() as this =
         with get() = fullReport
         and set value =
             fullReport <- value
-            printfn $"FullReport now has %d{fullReport.Count} items"
-            printfn $"%d{this.TotalReportsCount}"
-            //this.RaisePropertyChanged()
-            
-            // this should update the report count member below - it isnt but it should...
-            this.RaisePropertyChanged(nameof this.FullReport)
-            this.RaisePropertyChanged(nameof this.TotalReportsCount)
+            this.RaisePropertyChanged()
             
     member this.TotalReportsCount
-        with get() = this.FullReport.Count
+        with get() = reportCount
+        and set value =
+            reportCount <- value
+            this.RaisePropertyChanged()
+            
+    member this.ReportOpenCount
+        with get() = reportCountByStatus
+        and set value =
+            reportCountByStatus <- value
+            this.RaisePropertyChanged()            
+    member this.ReportResolvedCount
+        with get() = reportCountByStatus
+        and set value =
+            reportCountByStatus <- value
+            this.RaisePropertyChanged()            
+    member this.ReportUnderReviewCount
+        with get() = reportCountByStatus
+        and set value =
+            reportCountByStatus <- value
+            this.RaisePropertyChanged()
         
     // update reports getters setters BEGINS -----------------------------
         
@@ -218,34 +233,6 @@ type ReportsViewModel() as this =
             childInformation <- value
             this.RaisePropertyChanged()
             
-    (*member this.SeverityOption
-        with get() = severityOption
-        and set value =
-            severityOption <- value
-            this.RaisePropertyChanged()                 
-                        
-    member this.StatusOption
-        with get() = statusOption
-        and set value =
-            statusOption <- value
-            this.RaisePropertyChanged()
-            
-    member this.RaisedToSocial
-        with get() = raisedToSSOption
-        and set value =
-            raisedToSSOption <- value
-    
-    member this.ReportString
-        with get() = reportString
-        and set value =
-            reportString <- value
-            this.RaisePropertyChanged()
-            
-    member this.AssignedStaffId
-        with get() = assignedStaffId
-        and set value =
-            assignedStaffId <- value
-            this.RaisePropertyChanged()*)
     // ----------------------------------------
 
 
@@ -256,6 +243,19 @@ type ReportsViewModel() as this =
     member this.LoadAllReports() =
         let fetchedReports = FetchReports()
         this.FullReport <- ObservableCollection<SafeguardingReports>(fetchedReports |> List.toSeq)
+        
+    member this.FetchReportCount() =
+        let reportCountTotal = CountReports()
+        this.TotalReportsCount <- reportCountTotal
+        
+    member this.FetchReportCountByStatus(status: string) =
+        let reportByStatus = CountReportsByStatus status
+        match status with
+        | "Open" -> this.ReportOpenCount <- reportByStatus
+        | "Resolved" -> this.ReportResolvedCount <- reportByStatus
+        | "Under Review" -> this.ReportUnderReviewCount <- reportByStatus
+        |_ -> printfn "incorrect status input"
+        
     
     // gets data for the report we intend to update    
     member this.FetchSingleReport(id) =

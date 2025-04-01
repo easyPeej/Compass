@@ -8,32 +8,48 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Database\Database.fs" />
+        <!-- Core Utilities -->
         <Compile Include="Database\DbConnect.fs" />
+        <Compile Include="Services\OptionStringConverter.fs" />
+
+        <!-- Models -->
         <Compile Include="Models\UserModel.fs" />
         <Compile Include="Models\NewStaffModel.fs" />
         <Compile Include="Models\KeywordsModel.fs" />
         <Compile Include="Models\ChildDataModel.fs" />
-        <Compile Include="Services\UserSession.fs" />
-        <Compile Include="Services\OptionStringConverter.fs" />
         <Compile Include="Models\ReportsModel.fs" />
+
+        <!-- Services -->
+        <Compile Include="Services\UserSession.fs" />
+
+        <!-- Database Logic -->
+        <Compile Include="Database\Database.fs" />
         <Compile Include="Database\Reports.fs" />
         <Compile Include="Database\Staff.fs" />
+
+        <!-- ViewModels -->
         <Compile Include="ViewModels\LoginViewModel.fs" />
         <Compile Include="ViewModels\ReportsViewModel.fs" />
         <Compile Include="ViewModels\MainWindowViewModel.fs" />
         <Compile Include="ViewModels\NewStaffFormViewModel.fs" />
+        <Compile Include="ViewModels\DashboardViewModel.fs" />
+        <Compile Include="ViewModels\UsersViewModel.fs" />
+
+        <!-- Views -->
+        <Compile Include="Views\LoginPage.fs" />
+        <Compile Include="Views\BannerTemplate.fs" />
+        <Compile Include="Views\ViewUsersUC.fs" />
+        <Compile Include="Views\Reporting.fs" />
+        <Compile Include="Views\NewStaffFormView.fs" />
         <Compile Include="Views\ChildInfoUC.fs" />
         <Compile Include="Views\ReportCountUC.fs" />
         <Compile Include="Views\UpdateReport.fs" />
         <Compile Include="Views\ReportsUC.fs" />
-        <Compile Include="ViewModels\DashboardViewModel.fs" />
-        <Compile Include="Views\LoginPage.fs" />
-        <Compile Include="Views\BannerTemplate.fs" />
-        <Compile Include="Views\AdminDashboard.fs" />
+        <Compile Include="Views\ViewReportsAssignedUC.fs" />
         <Compile Include="Views\Dashboard.fs" />
-        <Compile Include="Views\Reporting.fs" />
-        <Compile Include="Views\NewStaffFormView.fs" />
+
+
+        <!-- Main Application Files -->
         <Compile Include="MainWindow.axaml.fs" />
         <Compile Include="App.axaml.fs" />
         <Compile Include="Program.fs" />

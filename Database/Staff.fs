@@ -19,7 +19,7 @@ module Staff =
             {| FirstName = staff.first_name
                LastName = staff.last_name
                Email = staff.email
-               Password = BCrypt.Net.BCrypt.HashPassword(staff.password_hash)
+               Password = staff.password_hash
                Role = staff.role
                Phone = staff.phone |> Option.defaultValue null
                CreatedAt = System.DateTime.Now
@@ -29,6 +29,11 @@ module Staff =
               
         connection.Execute(query, parameters) |> ignore
         
+    let FetchAllStaffDetails() =
+        use connection = DbConnect.GetConnection()
+        let query = "SELECT * FROM Users"
+        connection.Query<User>(query)
+        |> Seq.toList
         
     let FetchStaff() =
         use connection = DbConnect.GetConnection()

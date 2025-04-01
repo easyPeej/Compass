@@ -16,16 +16,22 @@ type Dashboard() as this =
         this.DataContext <- viewModel
         
         match viewModel.Role with
-        | "Admin" ->         // views report UC
-                let reportsControl = new ReportsUC()
+        | "Admin" -> 
+                let viewUsers = new ViewUsersUC()
                 let Panel = this.FindControl<StackPanel>("ContainerPanel")
-                Panel.Children.Add(reportsControl)
-        | "Teacher" -> // views report UC
-                let reportsControl = new ReportsUC()
+                Panel.Children.Add(viewUsers)
+        | "Teacher" -> 
+                let ViewAssignedReports = new ViewReportsAssignedUC()
                 let Panel = this.FindControl<StackPanel>("ContainerPanel")
-                Panel.Children.Add(reportsControl)
-        | "Safeguarding Lead" -> printfn "Safeguarding Lead"
-        | "Support Staff" -> printfn "Support Staff"
+                Panel.Children.Add(ViewAssignedReports)
+        | "Safeguarding Lead" ->
+                let viewAllReports = new ReportsUC()
+                let Panel = this.FindControl<StackPanel>("ContainerPanel")
+                Panel.Children.Add(viewAllReports)                
+        | "Support Staff" ->
+                let ViewAssignedReports = new ViewReportsAssignedUC()
+                let Panel = this.FindControl<StackPanel>("ContainerPanel")
+                Panel.Children.Add(ViewAssignedReports)            
         | _ -> printfn "none"
         
         

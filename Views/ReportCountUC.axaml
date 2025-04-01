@@ -11,10 +11,27 @@
             <TextBlock Text="At a glance..." FontSize="14" Foreground="WhiteSmoke" VerticalAlignment="Center" Padding="8,0,0,0"></TextBlock>
         </Border>
 
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Total Number of Reports: "/>
-            <TextBlock Text="{Binding FullReport.Count}"/>
+        <StackPanel Orientation="Horizontal" Margin="10, 5, 10, 2">
+            <TextBlock Text="Total Number of Reports: " FontWeight="Bold"/>
             <TextBlock Text="{Binding TotalReportsCount}"/>
         </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="10, 2, 10, 2.5">
+            <TextBlock Text="Open Reports: " FontWeight="Bold"/>
+            <TextBlock Text="{Binding ReportOpenCount}"/>
+        </StackPanel>         
+        
+        <StackPanel Orientation="Horizontal" Margin="10, 2, 10, 2.5">
+            <TextBlock Text="Under Review Reports: " FontWeight="Bold"/>
+            <TextBlock Text="{Binding ReportUnderReviewCount}"/>
+        </StackPanel>     
+        
+        <StackPanel Orientation="Horizontal" Margin="10, 2, 10, 2.5">
+            <TextBlock Text="Resolved Reports: " FontWeight="Bold"/>
+            <TextBlock Text="{Binding ReportResolvedCount}"/>
+        </StackPanel>    
+        
+        <Separator Margin="20, 5" Height="1"/>
+        
     </StackPanel>
 </UserControl>
