@@ -1,17 +1,22 @@
 namespace Compass
 
+open System.Collections
 open Avalonia
 open Avalonia.Controls 
 open Avalonia.Markup.Xaml
+open Compass.ViewModels
 open Compass.Views
 open Avalonia.Interactivity
 open Compass.Services
 
 type MainWindow () as this = 
     inherit Window ()
+    
+    let viewModel = MainWindowViewModel()
 
     do
         this.InitializeComponent()
+        this.DataContext <- viewModel
             
     do
         let loginPage = new LoginPage()
@@ -19,7 +24,10 @@ type MainWindow () as this =
         
         loginPage.LoginSuccess.Add(fun _ ->
             let dashboard = new Dashboard()
-            this.FindControl<ContentControl>("MainContent").Content <- dashboard)
+            this.FindControl<ContentControl>("MainContent").Content <- dashboard)        
+        
+        
+
     
     // need to implement patern match to check user session is active for use of the nav bar    
     // method for switching user content in the main window

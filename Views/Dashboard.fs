@@ -8,15 +8,31 @@ open Compass.ViewModels
 
 type Dashboard() as this =
     inherit UserControl()
+    
+    let viewModel = DashboardViewModel()
 
     do
         this.InitializeComponent()
-        this.DataContext <- DashboardViewModel()
+        this.DataContext <- viewModel
         
-        // views report UC
+        match viewModel.Role with
+        | "Admin" ->         // views report UC
+                let reportsControl = new ReportsUC()
+                let Panel = this.FindControl<StackPanel>("ContainerPanel")
+                Panel.Children.Add(reportsControl)
+        | "Teacher" -> // views report UC
+                let reportsControl = new ReportsUC()
+                let Panel = this.FindControl<StackPanel>("ContainerPanel")
+                Panel.Children.Add(reportsControl)
+        | "Safeguarding Lead" -> printfn "Safeguarding Lead"
+        | "Support Staff" -> printfn "Support Staff"
+        | _ -> printfn "none"
+        
+        
+        (*// views report UC
         let reportsControl = new ReportsUC()
         let Panel = this.FindControl<StackPanel>("ContainerPanel")
-        Panel.Children.Add(reportsControl)
+        Panel.Children.Add(reportsControl)*)
         
         // view total open cases
         let test = new ReportCountUC()
@@ -26,3 +42,5 @@ type Dashboard() as this =
 
     member private this.InitializeComponent() =
         AvaloniaXamlLoader.Load(this)
+
+

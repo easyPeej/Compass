@@ -23,7 +23,7 @@
     <Border Background="{DynamicResource 
     PrimaryBackgroundGradient}" Padding="5, 5, 10, 5"
             >   
-        <StackPanel Spacing="8">
+        <StackPanel Spacing="8" x:Name="NavBar" IsEnabled="{Binding IsNavBarEnabled}">
             <Image Source="{SvgImage /Assets/Images/logo.svg}"></Image> 
                     
             <Button Content="Dashboard" HorizontalAlignment="Stretch" Click="Dashboard"></Button>

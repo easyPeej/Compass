@@ -30,6 +30,7 @@
         <Compile Include="ViewModels\DashboardViewModel.fs" />
         <Compile Include="Views\LoginPage.fs" />
         <Compile Include="Views\BannerTemplate.fs" />
+        <Compile Include="Views\AdminDashboard.fs" />
         <Compile Include="Views\Dashboard.fs" />
         <Compile Include="Views\Reporting.fs" />
         <Compile Include="Views\NewStaffFormView.fs" />

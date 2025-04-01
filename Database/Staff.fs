@@ -36,5 +36,19 @@ module Staff =
         connection.Query<string>(query)
         |> Seq.toList
         
-                 
+        
+    let LastLoginUpdate(email) =
+        use connection = DbConnect.GetConnection()
+        let query = "UPDATE Users SET last_login = @DateTime WHERE email = @Email"
+        connection.Query<User>(query, {| Email = email; DateTime = System.DateTime.Now |})
+        
+    let Login(email) =
+        use connection = DbConnect.GetConnection()
+        
+        let query = "SELECT * FROM Users WHERE email = @Email"
+        let result =
+            connection.Query<User>(query, {| Email = email |})
+            |> Seq.tryHead
+        LastLoginUpdate(email) |> ignore
+        result
         

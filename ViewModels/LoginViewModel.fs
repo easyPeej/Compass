@@ -2,6 +2,7 @@
 
 open System
 open BCrypt.Net
+open Compass.Database.Staff
 open Dapper
 open ReactiveUI
 open Compass.Services
@@ -19,6 +20,7 @@ type LoginViewModel() =
     let mutable email = ""
     let mutable password = ""
     let mutable errorMessage = ""
+    let mutable lastLoginTime = DateTime
     
     member this.Email
         with get() = email
@@ -37,6 +39,12 @@ type LoginViewModel() =
         and set value =
             errorMessage <- value
             this.RaisePropertyChanged()
+            
+    member this.LastLoginTime
+        with get() = lastLoginTime
+        and set value =
+            lastLoginTime <- value
+            this.RaisePropertyChanged()
     
     
    // Test method to check the session singleton works as intended and stores user data on login        
@@ -50,23 +58,15 @@ type LoginViewModel() =
             this.ErrorMessage <- "No active session"
     // Test method -----------------------------------------------------------------------------
    
-    
-    // the 'else' portion could do with migrating to the Staff.fs db file to keep consistent with the seperation        
+        
     member this.Login() =
         if String.IsNullOrWhiteSpace(this.Email) || String.IsNullOrWhiteSpace(this.Password) then
             this.ErrorMessage <- "Email and Password are required"
             false
         else
-            use connection = DbConnect.GetConnection()
-
-            //////////////////////////////////////////////////////////////////////////////// NEEDS SECURING /////////////////////////////////////////////
-            
-            let sql = "SELECT * FROM Users WHERE email = @Email"
-            let result =
-                connection.Query<User>(sql, {| Email = this.Email |})
-                |> Seq.tryHead
-
-            //////////////////////////////////////////////////////////////////////////////// NEEDS SECURING /////////////////////////////////////////////                                
+            // login function in staff.fs
+            let result = Login(this.Email)
+                               
             match result with
             | None ->
                 this.ErrorMessage <- "Invalid email or password." 
@@ -79,6 +79,6 @@ type LoginViewModel() =
                     this.CheckSession()
                     true
                 else
-                    this.ErrorMessage <- "Invalid email or password. here"
+                    this.ErrorMessage <- "Invalid email or password."
                     false
                     

@@ -10,7 +10,7 @@ type [<CLIMutable>] User =
         role: string
         phone: string option
         created_at: System.DateTime
-        last_login: System.DateTime option
+        last_login: string option
         status: string
         permissions: string
     }
