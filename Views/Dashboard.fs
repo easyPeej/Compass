@@ -35,11 +35,6 @@ type Dashboard() as this =
         | _ -> printfn "none"
         
         
-        (*// views report UC
-        let reportsControl = new ReportsUC()
-        let Panel = this.FindControl<StackPanel>("ContainerPanel")
-        Panel.Children.Add(reportsControl)*)
-        
         // view total open cases
         let test = new ReportCountUC()
         let Panel2 = this.FindControl<StackPanel>("ContainerPanel2")

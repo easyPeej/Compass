@@ -3,6 +3,8 @@
 open Compass.Services
 open Dapper
 open Compass.Models
+open Newtonsoft.Json
+open System.IO
 
 
 

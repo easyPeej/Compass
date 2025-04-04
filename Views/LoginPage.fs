@@ -4,7 +4,7 @@ open Avalonia.Controls
 open Avalonia.Markup.Xaml
 open Compass.ViewModels
 
-type LoginPage() as this =
+type LoginPage(onLoginSuccess: unit -> unit) as this =
     inherit UserControl()
     
     // Handles event notification 
@@ -32,8 +32,8 @@ type LoginPage() as this =
             if viewModel.Login() then
                 // success - do things here
                 printf "login successful"
-                LoginSuccessEvent.Trigger()
-
+                //LoginSuccessEvent.Trigger()
+                onLoginSuccess()
             else
                 // fail - shows error message 
                 errorTextBlock.Text <- viewModel.ErrorMessage

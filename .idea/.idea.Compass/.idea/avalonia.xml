@@ -25,6 +25,7 @@
         <entry key="Views/UpdateReport.axaml" value="Compass.fsproj" />
         <entry key="Views/ViewChildDataUC.axaml" value="Compass.fsproj" />
         <entry key="Views/ViewReportsAssignedUC.axaml" value="Compass.fsproj" />
+        <entry key="Views/ViewUsersUC.axaml" value="Compass.fsproj" />
         <entry key="Views/Window1.axaml" value="Compass.fsproj" />
         <entry key="Views/second.axaml" value="Compass.fsproj" />
       </map>

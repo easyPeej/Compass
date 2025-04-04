@@ -13,6 +13,7 @@ type UserSession private () =
     // THIS NEEDS SOME SERIOUS WORK FGS
     static let mutable LoggedIn = false
     static let sessionChanged = Event<unit>()
+    
     static member UserSessionChanged = sessionChanged.Publish
     static member LoggedInCheck
         with get() = LoggedIn
