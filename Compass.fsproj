@@ -10,6 +10,7 @@
     <ItemGroup>
         <!-- Core Utilities -->
         <Compile Include="Database\DbConnect.fs" />
+        <Compile Include="Security\MFA.fs" />
         <Compile Include="Services\OptionStringConverter.fs" />
 
         <!-- Models -->
@@ -67,11 +68,17 @@
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
+        
+        <!-- installed packages -->
         <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
         <PackageReference Include="Dapper" Version="2.1.66" />
         <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.2" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="SkiaSharp" Version="3.116.1" />
+        <PackageReference Include="Otp.NET" Version="1.4.0" />
+        <PackageReference Include="QRCoder" Version="1.6.0" />
         <PackageReference Include="ReactiveUI" Version="20.1.63" />
+        
     </ItemGroup>
 
     <ItemGroup>

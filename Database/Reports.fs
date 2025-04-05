@@ -1,14 +1,31 @@
 ﻿namespace Compass.Database
 
-open Compass.Services
+open System
 open Dapper
 open Compass.Models
-open Newtonsoft.Json
 open System.IO
-
+open System.Text.Json
 
 
 module Reports =
+        
+        // intended to keep records that are updated - keeping older data for reference
+        // Note - they store in - bin -> backupreports 
+        let RecordToJson(record: SafeguardingReports) (filePath: string) =
+            try
+                let dir = Path.GetDirectoryName(filePath)
+                if not (Directory.Exists(dir)) then
+                    Directory.CreateDirectory(dir) |> ignore
+                    
+                let options = JsonSerializerOptions(WriteIndented = true)    
+                let json = JsonSerializer.Serialize(record, options)
+                File.WriteAllText(filePath, json)
+                printfn $"Success writing to json {filePath}"
+            with _ -> printfn "Error writing to json"        
+            
+            
+
+        // DB Methods ----
         
         // Fetches all reports - no parameters
         let FetchReports () =
@@ -109,6 +126,14 @@ module Reports =
         
         
         let ExecuteUpdateReport (report: SafeguardingReports) (currentUserID: int64) =
+            // retrieves the old report before update - exports it to a json file
+            let oldReport = FetchSingleReport report.id
+            let timeStamp = DateTime.Now.ToString("ddmmyyyy_HHmmss")
+            let path = $"BackupReports/Report_{report.id}_{timeStamp}.json"
+            RecordToJson oldReport path
+            // ---
+            
+            // the following then updates the report
             let extractedId =
                 match report.assigned_staff with
                 | Some(idNum) -> idNum
