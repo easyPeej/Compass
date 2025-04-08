@@ -1,49 +1,32 @@
 ﻿namespace Compass.Security
 
-open System.Net.Http
-open QRCoder
-open System.IO
-open Avalonia.Controls
-open Avalonia.Markup.Xaml
-open Avalonia.Media.Imaging
+open System
+open SendGrid.Helpers.Mail
+open Twilio
+open Twilio.Rest.Api.V2010.Account
+open Twilio.Types
+open SendGrid
+open SendGrid.Helpers
+open System.Threading.Tasks
 
-module MFA = 
+module OTP =
+
+    let accountSid = "VA231721bee20f09b6b47b33e190eab03b"
+    let authToken = "[41c9e2d80dda183168f276e5e71e5030]"
     
-    (*let GenKey() =
-        let key = KeyGeneration.GenerateRandomKey(20)
-        Base32Encoding.ToString(key)
-        
-    let genQrCode(userEmail: string) (secretKey: String) =
-        let issuer = "Compass"
-        let otpUri = $"otpauth://totp/{issuer}:{userEmail}?secret={secretKey}&issuer={issuer}&digits=6"
-        
-        let qrGen = new QRCodeGenerator()
-        let qrData = qrGen.CreateQrCode(otpUri, QRCodeGenerator.ECCLevel.Q)
-        let qrCode = new 
-        let qrImage = qrCode.GetGraphic(20)
-        
-        let path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "MFAQRCode.png")
-        qrImage.Save(path, ImageFormat.Png)*)
+    let GenerateCode() =
+        let rnd = System.Random()
+        rnd.Next(100000, 999999).ToString()
     
-    
-        
-    // generate a qr code and convert to png     
-    let GenQrCodeBytes(content: string) =
-        let qrGen = new QRCodeGenerator()
-        let qrData = qrGen.CreateQrCode(content, QRCodeGenerator.ECCLevel.Q)
-        let qrCode = new BitmapByteQRCode(qrData)
-        let byteArray = qrCode.GetGraphic(20)
-        byteArray
-        
-    let ToBitmap (byteArray: byte[]) =
-        let stream = new MemoryStream(byteArray)
-        new Bitmap(stream)
-        
-    let DisplayQrCode(content: string) =
-        let qr = GenQrCodeBytes(content)
-        
-        let qrBitmap = ToBitmap(qr)
-        
-        match this.FindControl<Image>("QrCodeImage") with
-        | null -> ()
-        | imageConrol -> imageConrol.Source <- qrBitmap
+    let SendEmail (toEmail: string) (code: string) =
+        let apiKey = "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"
+        let client = new SendGridClient(apiKey)
+        let from = EmailAddress("pscottcaven@gmail.com", "Compass")
+        let subject = "Your OTP Verification Code"
+        let toAddress = EmailAddress(toEmail)
+        let plaintextContent = $"Your OTP Verification Code: {code}"
+        let htmlContent = $"<strong>Your MFA code is: {code}</strong>"
+        let msg = MailHelper.CreateSingleEmail(from, toAddress, subject, plaintextContent, htmlContent)
+        let response = client.SendEmailAsync(msg)
+        printfn $"Sending OTP email to {toEmail}"
+        response.Status

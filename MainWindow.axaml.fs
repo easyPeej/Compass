@@ -19,7 +19,8 @@ type MainWindow () as this =
     let onLoginSuccess() =
         match UserSession.UserSession with
         | Some user ->
-            let dashboard = Dashboard()
+            (*let dashboard = Dashboard()*)
+            let dashboard = MFAView()
             this.NavigateToPage(dashboard)
         | None ->
             this.NavigateToPage(this.CreateLoginPage())    

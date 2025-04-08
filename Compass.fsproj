@@ -29,6 +29,7 @@
         <Compile Include="Database\Staff.fs" />
 
         <!-- ViewModels -->
+        <Compile Include="ViewModels\MFAViewModel.fs" />
         <Compile Include="ViewModels\LoginViewModel.fs" />
         <Compile Include="ViewModels\ReportsViewModel.fs" />
         <Compile Include="ViewModels\MainWindowViewModel.fs" />
@@ -47,6 +48,7 @@
         <Compile Include="Views\UpdateReport.fs" />
         <Compile Include="Views\ReportsUC.fs" />
         <Compile Include="Views\ViewReportsAssignedUC.fs" />
+        <Compile Include="Views\MFAView.fs" />
         <Compile Include="Views\Dashboard.fs" />
 
 
@@ -74,10 +76,12 @@
         <PackageReference Include="Dapper" Version="2.1.66" />
         <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.2" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Sendgrid" Version="9.29.3" />
         <PackageReference Include="SkiaSharp" Version="3.116.1" />
         <PackageReference Include="Otp.NET" Version="1.4.0" />
         <PackageReference Include="QRCoder" Version="1.6.0" />
         <PackageReference Include="ReactiveUI" Version="20.1.63" />
+        <PackageReference Include="Twilio" Version="7.10.0" />
         
     </ItemGroup>
 

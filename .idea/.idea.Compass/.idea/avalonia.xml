@@ -13,6 +13,7 @@
         <entry key="Views/FirstView.axaml" value="Compass.fsproj" />
         <entry key="Views/LoginPage.axaml" value="Compass.fsproj" />
         <entry key="Views/LoginView.axaml" value="Compass.fsproj" />
+        <entry key="Views/MFAView.axaml" value="Compass.fsproj" />
         <entry key="Views/NavTemplate.axaml" value="Compass.fsproj" />
         <entry key="Views/NewStaffFormView.axaml" value="Compass.fsproj" />
         <entry key="Views/ReportCountUC.axaml" value="Compass.fsproj" />

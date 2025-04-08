@@ -3,17 +3,15 @@
 open System
 open BCrypt.Net
 open Compass.Database.Staff
-open Dapper
+open Compass.Security.OTP
 open ReactiveUI
 open Compass.Services
 open Compass.Models
-open Compass.Database
-
-
+open Avalonia.Markup.Xaml
+open Avalonia.Controls
 
 type LoginViewModel() =
     inherit ReactiveObject()
-    
     
     
     // bind properties
@@ -21,6 +19,8 @@ type LoginViewModel() =
     let mutable password = ""
     let mutable errorMessage = ""
     let mutable lastLoginTime = DateTime
+    let mutable latestCode = ""
+    let mutable inputCode = ""
     
     member this.Email
         with get() = email
@@ -45,8 +45,20 @@ type LoginViewModel() =
         and set value =
             lastLoginTime <- value
             this.RaisePropertyChanged()
+            
+    member this.CurrentOtp
+        with get() = latestCode
+        and set value =
+            latestCode <- value
+            this.RaisePropertyChanged()
+            
+    member this.CurrentInputCode
+        with get() = inputCode
+        and set value =
+            inputCode <- value
+            this.RaisePropertyChanged()
     
-    
+     
    // Test method to check the session singleton works as intended and stores user data on login        
     member this.CheckSession() =
         match UserSession.UserSession with
@@ -58,6 +70,11 @@ type LoginViewModel() =
             this.ErrorMessage <- "No active session"
     // Test method -----------------------------------------------------------------------------
    
+    
+    member this.OtpCheck () =
+        let code = GenerateCode()
+        this.CurrentOtp <- code
+        do SendEmail this.Email code |> ignore
         
     member this.Login() =
         if String.IsNullOrWhiteSpace(this.Email) || String.IsNullOrWhiteSpace(this.Password) then
@@ -75,6 +92,7 @@ type LoginViewModel() =
                 if BCrypt.Verify(this.Password.Trim(), user.password_hash.Trim()) then
                     UserSession.UserSession <- Some user
                     this.ErrorMessage <- ""
+                    
                     // Using the session tester method
                     this.CheckSession()
                     true
@@ -82,3 +100,5 @@ type LoginViewModel() =
                     this.ErrorMessage <- "Invalid email or password."
                     false
                     
+        
+        

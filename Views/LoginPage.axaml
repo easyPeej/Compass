@@ -30,7 +30,7 @@
                     <TextBox Name="EmailTextBox" />
                     
                     <TextBlock FontWeight="Bold" Text="Password"  Margin="5, 10, 5, 1"/>
-                    <TextBox Name="PasswordBox" PasswordChar=""/>
+                    <TextBox Name="PasswordBox" PasswordChar="*"/>
                     
                     <Button Name="LoginButton" Content="Login" HorizontalAlignment="Center" Margin="15"></Button>
 
