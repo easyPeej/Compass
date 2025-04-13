@@ -16,7 +16,7 @@ type MainWindowViewModel() as this =
     do
         UserSession.UserSessionChanged.Add(fun _ ->
             this.isLoggedInCheck <- UserSession.LoggedInCheck
-            this.IsNavBarEnabled <- UserSession.LoggedInCheck)
+            this.IsNavBarEnabled <- UserSession.LoggedInCheck && UserSession.OtpPassedCheck)
         
         match UserSession.UserSession with
         | Some user ->

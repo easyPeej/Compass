@@ -98,7 +98,7 @@ module Database =
             connection.Execute(insertQuery, users) |> ignore
             printfn "Default users inserted."
         else
-            printfn "Users already exist, skipping insert."
+            printfn ""
         
         
 
@@ -121,7 +121,7 @@ module Database =
             connection.Execute(insertChildQuery, children) |> ignore
             printfn "Dummy children inserted."
         else
-            printfn "Children already exist, skipping insert."
+            printfn ""
         
         
         // Checking if keywords exist, if not, insert dummy keywords
@@ -145,7 +145,7 @@ module Database =
             connection.Execute(insertKeywordQuery, keywords) |> ignore
             printfn "Dummy keywords inserted."
         else
-            printfn "Keywords already exist, skipping insert."
+            printfn ""
         
         
         // Checking if ReportKeywords exist, if not, insert dummy associations
@@ -163,7 +163,7 @@ module Database =
             connection.Execute(insertReportKeywordQuery, reportKeywords) |> ignore
             printfn "Dummy report-keyword associations inserted."
         else
-            printfn "ReportKeywords already exist, skipping insert."
+            printfn ""
             
             
         

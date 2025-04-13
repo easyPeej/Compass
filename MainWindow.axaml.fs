@@ -13,17 +13,23 @@ type MainWindow () as this =
     inherit Window ()
     
     let viewModel = MainWindowViewModel()
-    (*let loginPage = new LoginPage()*)
+    
+    let onOtpSuccess() =
+        match UserSession.UserSession with
+        | Some user ->
+            let View = Dashboard()  
+            this.NavigateToPage(View)
+        | None ->
+            this.NavigateToPage(this.CreateLoginPage())    
     
     // using a callback to help navigate between login and dashboard, between users
     let onLoginSuccess() =
         match UserSession.UserSession with
         | Some user ->
-            (*let dashboard = Dashboard()*)
-            let dashboard = MFAView()
-            this.NavigateToPage(dashboard)
+            let View = MFAView(onOtpSuccess)    
+            this.NavigateToPage(View)
         | None ->
-            this.NavigateToPage(this.CreateLoginPage())    
+            this.NavigateToPage(this.CreateLoginPage())
 
     do
         this.InitializeComponent()

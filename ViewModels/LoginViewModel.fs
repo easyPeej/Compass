@@ -7,8 +7,6 @@ open Compass.Security.OTP
 open ReactiveUI
 open Compass.Services
 open Compass.Models
-open Avalonia.Markup.Xaml
-open Avalonia.Controls
 
 type LoginViewModel() =
     inherit ReactiveObject()
@@ -46,11 +44,11 @@ type LoginViewModel() =
             lastLoginTime <- value
             this.RaisePropertyChanged()
             
-    member this.CurrentOtp
+    (*member this.CurrentOtp
         with get() = latestCode
         and set value =
             latestCode <- value
-            this.RaisePropertyChanged()
+            this.RaisePropertyChanged()*)
             
     member this.CurrentInputCode
         with get() = inputCode
@@ -60,30 +58,32 @@ type LoginViewModel() =
     
      
    // Test method to check the session singleton works as intended and stores user data on login        
-    member this.CheckSession() =
+    (*member this.CheckSession() =
         match UserSession.UserSession with
         | Some user ->
             printf $"Logged in as: %s{user.first_name} %s{user.last_name} as %s{user.role} (Email: %s{user.email})"
             this.ErrorMessage <- $"Welcome, {user.first_name}"
         | None ->
             printf "no user logged in"
-            this.ErrorMessage <- "No active session"
+            this.ErrorMessage <- "No active session"*)
     // Test method -----------------------------------------------------------------------------
    
     
-    member this.OtpCheck () =
+    (*member this.SendOTP () =
         let code = GenerateCode()
         this.CurrentOtp <- code
-        do SendEmail this.Email code |> ignore
+        (* DISABLED EMAILS WHILE TESTING     ///////////////////////////////////////////////////////////////////////////////////
+        do SendEmail this.Email code |> ignore*)*)
         
     member this.Login() =
         if String.IsNullOrWhiteSpace(this.Email) || String.IsNullOrWhiteSpace(this.Password) then
             this.ErrorMessage <- "Email and Password are required"
             false
         else
-            // login function in staff.fs
+            // login db method in staff.fs
             let result = Login(this.Email)
-                               
+            
+            // check results returned a user with matching credentials                    
             match result with
             | None ->
                 this.ErrorMessage <- "Invalid email or password." 
@@ -92,13 +92,7 @@ type LoginViewModel() =
                 if BCrypt.Verify(this.Password.Trim(), user.password_hash.Trim()) then
                     UserSession.UserSession <- Some user
                     this.ErrorMessage <- ""
-                    
-                    // Using the session tester method
-                    this.CheckSession()
                     true
                 else
                     this.ErrorMessage <- "Invalid email or password."
                     false
-                    
-        
-        

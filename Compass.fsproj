@@ -22,6 +22,7 @@
 
         <!-- Services -->
         <Compile Include="Services\UserSession.fs" />
+        <Compile Include="Services\Navigation.fs" />
 
         <!-- Database Logic -->
         <Compile Include="Database\Database.fs" />
@@ -29,8 +30,8 @@
         <Compile Include="Database\Staff.fs" />
 
         <!-- ViewModels -->
-        <Compile Include="ViewModels\MFAViewModel.fs" />
         <Compile Include="ViewModels\LoginViewModel.fs" />
+        <Compile Include="ViewModels\MFAViewModel.fs" />
         <Compile Include="ViewModels\ReportsViewModel.fs" />
         <Compile Include="ViewModels\MainWindowViewModel.fs" />
         <Compile Include="ViewModels\NewStaffFormViewModel.fs" />

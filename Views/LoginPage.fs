@@ -18,7 +18,7 @@ type LoginPage(onLoginSuccess: unit -> unit) as this =
         this.InitializeComponent()
         this.DataContext <- viewModel
         
-        let viewModel = LoginViewModel()
+        (*let viewModel = LoginViewModel()*)
     
         let emailTextBox = this.FindControl<TextBox>("EmailTextBox")
         let passwordBox = this.FindControl<TextBox>("PasswordBox")
@@ -31,12 +31,8 @@ type LoginPage(onLoginSuccess: unit -> unit) as this =
         
         loginButton.Click.Add(fun _ ->
             if viewModel.Login() then
+                (*printf "login successful"*)
                 
-                // otp testing
-                let sendOtp = viewModel.OtpCheck()
-                
-                
-                printf "login successful"
                 onLoginSuccess()
             else
                 // shows error message 
