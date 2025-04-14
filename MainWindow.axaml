@@ -26,14 +26,13 @@
         <StackPanel Spacing="8" x:Name="NavBar" IsEnabled="{Binding IsNavBarEnabled}">
             <Image Source="{SvgImage /Assets/Images/logo.svg}"></Image> 
                     
-            <Button Content="Dashboard" HorizontalAlignment="Stretch" Click="Dashboard"></Button>
-            <Button Content="Create Report" HorizontalAlignment="Stretch" Click="Reporting"></Button>
-            <Button Content="Add Staff" HorizontalAlignment="Stretch" Click="AddMember"></Button>
-            <Button Content="Test: update report" HorizontalAlignment="Stretch" Click="UpdateReport"></Button>
-            <Button Content="..." HorizontalAlignment="Stretch"></Button>
+            <Button Content="Dashboard" HorizontalAlignment="Stretch" Click="Dashboard" IsVisible="True"></Button>
+            <Button Content="Create Report" HorizontalAlignment="Stretch" Click="Reporting" IsVisible="{Binding IsLeadNav}"></Button>
+            <Button Content="Add Staff" HorizontalAlignment="Stretch" Click="AddMember" IsVisible="{Binding IsAdminNav}"></Button>
             <Button Content="Logout" Click="LogoutButton" IsVisible="{Binding isLoggedInCheck}"></Button>
 
         </StackPanel>
+
     </Border>    
         
 

@@ -21,3 +21,15 @@ type OptionStringConverter() =
     
         member this.ConvertBack (value: obj, targetType: Type, parameter: obj, culture: CultureInfo) =
             raise (NotImplementedException("Convert back is not implemented"))
+            
+type BoolToYesNoConverter() =
+    interface IValueConverter with
+        member this.Convert(value: obj, targetType: Type, parameter: obj, culture: CultureInfo) =
+            match value with
+            | :? bool as b -> if b then "Yes" :> obj else "No" :> obj
+            | _ -> "No" :> obj
+
+        member this.ConvertBack(value: obj, targetType: Type, parameter: obj, culture: CultureInfo) =
+            match value with
+            | :? string as s -> (s.Trim().ToLower() = "yes") :> obj
+            | _ -> false :> obj

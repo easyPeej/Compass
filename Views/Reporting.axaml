@@ -22,7 +22,7 @@
                 
                 <StackPanel Margin="10" RenderTransformOrigin="0.5, 0.5">
                     
-                    <TextBlock FontSize="22" FontWeight="Bold" Text="Create new safeguard report" Margin="10" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="22" FontWeight="Bold" Text="Create New Report" Margin="10" HorizontalAlignment="Center"/>
 
                     <TextBlock FontWeight="Bold" Text="Child Name"  Margin="5, 10, 5, 1"/>
                     <ComboBox ItemsSource="{Binding ChildrenNames}"

@@ -55,7 +55,6 @@ type MainWindow () as this =
     member this.CreateLoginPage() =
         new LoginPage(onLoginSuccess)
     
-    // not likely to need this in the end 
     member this.LoginButton(sender: obj, e: RoutedEventArgs) =
         this.NavigateToPage(this.CreateLoginPage())
           

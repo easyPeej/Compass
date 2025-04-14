@@ -36,6 +36,8 @@ type ReportsViewModel() as this =
     let mutable staffNames = ObservableCollection<string>()
     let mutable reportConcernText = ""
     let mutable currentUserId = 0L
+    let mutable roleIsLead = false
+    
     
     
     // everything here is for updating a report
@@ -65,14 +67,12 @@ type ReportsViewModel() as this =
     let mutable selectedChildName: string option = None
     (*let mutable selectedAssignedStaff = *)
 
-    
-    
-    
     do
         this.FetchKeywords()
         this.FetchChildren()
         this.FetchStaff()
-
+        this.CheckRole()
+        
         match UserSession.UserSession with
         | Some user ->
              currentSessionUserId <- user.id
@@ -232,8 +232,11 @@ type ReportsViewModel() as this =
         and set value =
             childInformation <- value
             this.RaisePropertyChanged()
-            
-    // ----------------------------------------
+    
+    member this.RoleIsLead
+        with get() = roleIsLead
+        and set value =
+            roleIsLead <- value
 
 
     
@@ -302,4 +305,10 @@ type ReportsViewModel() as this =
         ExecuteUpdateReport singleReport currentSessionUserId|> ignore
         
 
+    member this.CheckRole() =
+        match UserSession.GetRole() with
+        | Some role when role = "Safeguarding Lead" ->
+            this.RoleIsLead <- true
+        | _ ->
+            this.RoleIsLead <- false
         

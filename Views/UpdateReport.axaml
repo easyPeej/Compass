@@ -47,7 +47,7 @@
                                           ItemsSource="{Binding StaffNames}"
                                           SelectedItem="{Binding StaffName, Mode=TwoWay}" Width="200"
                                           Margin="0, 0, 0, 15"
-                                          MaxDropDownHeight="175"/><!-- set up a bind for assigned staff member on update -->
+                                          MaxDropDownHeight="175" IsEnabled="{Binding RoleIsLead}"/>
 
 
                                 <TextBlock Text="Severity: " Margin="0, 0, 0, 5"/>

@@ -33,6 +33,11 @@ type UserSession private () as this =
         match userSession with
         | Some user -> Some user.id
         | None -> None
+        
+    static member GetRole() =
+        match userSession with
+        | Some user -> Some user.role
+        | None -> None
 
     
     static member Logout() =

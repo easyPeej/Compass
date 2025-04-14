@@ -9,6 +9,7 @@
              x:Class="Compass.Views.ViewReportsAssignedUC">
         <UserControl.Resources>
         <local:OptionStringConverter x:Key="OptionStringConverter"/>
+        <local:BoolToYesNoConverter x:Key="BoolToYesNoConverter" />
     </UserControl.Resources>
     
     <StackPanel>
@@ -63,7 +64,7 @@
                                 <TextBlock Text="Severity: " FontWeight="Bold" TextWrapping="Wrap"/>
                                 <TextBlock Text="{Binding severity}" TextWrapping="Wrap"/>
                                 <TextBlock Text="Notified Social Services? " FontWeight="Bold" TextWrapping="Wrap"/>
-                                <TextBlock Text="{Binding raised_to_social_care}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding raised_to_social_care, Converter={StaticResource BoolToYesNoConverter}}" TextWrapping="Wrap"/>
                             </StackPanel>
                             
                             <!-- Selected Report -->

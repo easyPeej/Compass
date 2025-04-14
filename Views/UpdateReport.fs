@@ -5,6 +5,7 @@ open Compass.ViewModels
 open Avalonia.Controls
 open Avalonia.Markup.Xaml
 open Avalonia.Interactivity
+open Compass.Services
 
 type UpdateReport(reportId: int) as this =
     inherit UserControl()
@@ -12,7 +13,7 @@ type UpdateReport(reportId: int) as this =
     let viewModel = ReportsViewModel()
     
 
-    do 
+    do
         AvaloniaXamlLoader.Load(this)
         this.DataContext <- viewModel
         viewModel.SingleReportId <- reportId
@@ -22,7 +23,7 @@ type UpdateReport(reportId: int) as this =
     member this.UpdateReportMethod(sender: obj, e: RoutedEventArgs) =
         
         viewModel.UpdateReport()
-
+    
         
 
     
