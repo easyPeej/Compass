@@ -23,7 +23,8 @@ type MFAViewModel() as this =
         | None ->
             email <- ""
             
-        printfn $"MFA View Model test email: {this.Email}"       
+        // TESTING    
+        //printfn $"MFA View Model test email: {this.Email}"       
 
     member this.Email
         with get() = email
@@ -66,7 +67,7 @@ type MFAViewModel() as this =
         this.CurrentOtp <- code
         
         (* Disable this for testing *)
-        (*do SendEmail this.Email code |> ignore *)
+        (*do SendEmail this.Email code |> ignore *) 
     
     member this.VerifyOTP() =
         let code = this.InputCode.Trim()
@@ -80,14 +81,12 @@ type MFAViewModel() as this =
             false
             
         elif code = this.CurrentOtp then
-            if this.InputCode = this.CurrentOtp then
                 this.OtpAttemptCount <- 3
                 this.CurrentOtp <- ""
                 this.AttemptsOver <- false
                 UserSession.OtpPassed <- true
                 true
-            else
-                false
+
                 
         else // incorrect attempts 
             this.OtpAttemptCount <- this.OtpAttemptCount - 1

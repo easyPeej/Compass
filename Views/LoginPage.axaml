@@ -33,11 +33,6 @@
                     <TextBox Name="PasswordBox" PasswordChar="*"/>
                     
                     <Button Name="LoginButton" Content="Login" HorizontalAlignment="Center" Margin="15"></Button>
-
-                        <!-- working on above for now -->
-                    <!--<CheckBox Foreground="Black" HorizontalAlignment="Center" IsChecked="False"
-                              Content="Remember me">
-                    </CheckBox>-->
                     
                     <TextBlock HorizontalAlignment="Center" Text="Forgot your password? -">
                         <HyperlinkButton  Margin="-5, 5, 0, -7">Reset here</HyperlinkButton>

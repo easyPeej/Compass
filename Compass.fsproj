@@ -10,6 +10,8 @@
     <ItemGroup>
         <!-- Core Utilities -->
         <Compile Include="Database\DbConnect.fs" />
+        <Compile Include="obj\Debug\net9.0\.NETCoreApp,Version=v9.0.AssemblyAttributes.fs" />
+        <Compile Include="obj\Debug\net9.0\Compass.AssemblyInfo.fs" />
         <Compile Include="Security\MFA.fs" />
         <Compile Include="Services\OptionStringConverter.fs" />
 
@@ -21,8 +23,8 @@
         <Compile Include="Models\ReportsModel.fs" />
 
         <!-- Services -->
-        <Compile Include="Services\UserSession.fs" />
         <Compile Include="Services\Navigation.fs" />
+        <Compile Include="Services\UserSession.fs" />
 
         <!-- Database Logic -->
         <Compile Include="Database\Database.fs" />
@@ -91,10 +93,35 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="bin\Debug\net9.0\Data.db" />
+      <Content Include="obj\Compass.fsproj.nuget.dgspec.json" />
+      <Content Include="obj\Compass.fsproj.nuget.g.props" />
+      <Content Include="obj\Compass.fsproj.nuget.g.targets" />
+      <Content Include="obj\Debug\net9.0\apphost.exe" />
+      <Content Include="obj\Debug\net9.0\Avalonia\Compass.dll" />
+      <Content Include="obj\Debug\net9.0\Avalonia\Compass.pdb" />
+      <Content Include="obj\Debug\net9.0\Avalonia\references" />
+      <Content Include="obj\Debug\net9.0\Avalonia\resources" />
+      <Content Include="obj\Debug\net9.0\Avalonia\Resources.Inputs.cache" />
+      <Content Include="obj\Debug\net9.0\Compass.AssemblyInfoInputs.cache" />
+      <Content Include="obj\Debug\net9.0\Compass.assets.cache" />
+      <Content Include="obj\Debug\net9.0\Compass.dll" />
+      <Content Include="obj\Debug\net9.0\Compass.fsproj.AssemblyReference.cache" />
+      <Content Include="obj\Debug\net9.0\Compass.fsproj.CoreCompileInputs.cache" />
+      <Content Include="obj\Debug\net9.0\Compass.fsproj.FileListAbsolute.txt" />
+      <Content Include="obj\Debug\net9.0\Compass.fsproj.Up2Date" />
+      <Content Include="obj\Debug\net9.0\Compass.genruntimeconfig.cache" />
+      <Content Include="obj\Debug\net9.0\Compass.pdb" />
+      <Content Include="obj\Debug\net9.0\Compass.sourcelink.json" />
+      <Content Include="obj\Debug\net9.0\refint\Avalonia\Compass.dll" />
+      <Content Include="obj\Debug\net9.0\refint\Compass.dll" />
+      <Content Include="obj\Debug\net9.0\ref\Compass.dll" />
+      <Content Include="obj\project.assets.json" />
+      <Content Include="obj\project.nuget.cache" />
+      <Content Include="obj\project.packagespec.json" />
+      <Content Include="obj\rider.project.model.nuget.info" />
+      <Content Include="obj\rider.project.restore.info" />
     </ItemGroup>
 
 
-
-
+    
 </Project>

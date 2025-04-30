@@ -45,6 +45,7 @@ type ViewReportsAssignedUC() as this =
         
 
     member this.NavigateToPage(page: UserControl) =
+        UserSession.RefreshSession()
         match this.VisualRoot with
         | :? Window as mainWindow -> 
             match mainWindow.FindControl<ContentControl>("MainContent") with

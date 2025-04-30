@@ -16,6 +16,8 @@ type App() =
     override this.OnFrameworkInitializationCompleted() =
         initializeDatabase()
         
+        Compass.Services.UserSession.StartSessionTimer() // Starts the session timer    
+        
         match this.ApplicationLifetime with
         | :? IClassicDesktopStyleApplicationLifetime as desktop ->
              desktop.MainWindow <- MainWindow()

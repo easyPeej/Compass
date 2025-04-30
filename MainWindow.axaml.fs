@@ -33,9 +33,13 @@ type MainWindow () as this =
 
     do
         this.InitializeComponent()
-        this.DataContext <- viewModel
-            
-        this.NavigateToPage(this.CreateLoginPage())    
+        this.DataContext <- viewModel            
+        this.NavigateToPage(this.CreateLoginPage())
+        
+        // when session expires, the user is sent back to the login view
+        UserSession.SessionExpired.Add(fun _ ->
+            Avalonia.Threading.Dispatcher.UIThread.Post(fun _ ->
+                this.NavigateToPage(this.CreateLoginPage())))
                      
    
     // method for switching user content in the main window
@@ -53,28 +57,32 @@ type MainWindow () as this =
     // FYI - 'LoginButton' is linked to the Click type in the button in main axaml, this is how they recognise
     
     member this.CreateLoginPage() =
-        new LoginPage(onLoginSuccess)
+        LoginPage(onLoginSuccess)
     
     member this.LoginButton(sender: obj, e: RoutedEventArgs) =
         this.NavigateToPage(this.CreateLoginPage())
           
     member this.LogoutButton(sender: obj, e: RoutedEventArgs) =
-          UserSession.Logout()
-          this.NavigateToPage(this.CreateLoginPage())
+         UserSession.Logout()
+         this.NavigateToPage(this.CreateLoginPage())
           
     member this.Dashboard(sender: obj, e: RoutedEventArgs) =
+        UserSession.RefreshSession()
         let dashboard = new Dashboard()
         this.NavigateToPage(dashboard)
         
     member this.Reporting(sender: obj, e: RoutedEventArgs) =
+        UserSession.RefreshSession()
         let reporting = new Reporting()
         this.NavigateToPage(reporting)
         
     member this.AddMember(sender: obj, e: RoutedEventArgs) =
+        UserSession.RefreshSession()
         let addStaff = new NewStaffFormView()
         this.NavigateToPage(addStaff)
         
     member this.UpdateReport(sender: obj, e: RoutedEventArgs) =
+        UserSession.RefreshSession()
         let updateReport = new UpdateReport(0)
         this.NavigateToPage(updateReport)
         

@@ -3,15 +3,45 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Compass.ViewModels"
+             xmlns:views="clr-namespace:Compass.Views"
              x:DataType="vm:MFAViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Compass.Views.MFAView">
     
-    <StackPanel Spacing="10" Margin="20">
+    <!--<StackPanel Spacing="10" Margin="20">
         <TextBlock Text="Enter the 6-digit code sent to your email" />
         <TextBlock Name="ErrorTextBlock" Foreground="Red" HorizontalAlignment="Center"/>
         <TextBox Name="InputCodeBox" Text="{Binding InputCode}" Width="200"/>
         <Button Name="VerifyButton" Content="Verify" />
-    </StackPanel>
+    </StackPanel>-->
+    
+    <Grid>
+        <StackPanel>
+            <DockPanel>
+                <views:BannerTemplate/>
+            </DockPanel>
+        </StackPanel>
+        
+        <Canvas Width="320" Height="260">
+            <Border BorderBrush="SlateGray" BorderThickness="1, 1, 1, 5" 
+                    CornerRadius="5" Width="375">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Opacity="0.4" Color="#222831"/>
+                </Border.Effect>
+                
+                <StackPanel Margin="10">
+                    
+                    <TextBlock Text="Enter the 6-digit code sent to your email" />
+                    <TextBlock Name="ErrorTextBlock" Foreground="Red" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBox Name="InputCodeBox" Text="{Binding InputCode}" Width="200"/>
+                    <Button Name="VerifyButton" Content="Verify" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    
+                    <Button Click="LogoutButton" Content="Cancel Login" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                </StackPanel>
+            </Border>
+        </Canvas>
+        
+    </Grid>
     
 </UserControl>

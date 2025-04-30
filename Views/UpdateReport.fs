@@ -21,7 +21,7 @@ type UpdateReport(reportId: int) as this =
         
         
     member this.UpdateReportMethod(sender: obj, e: RoutedEventArgs) =
-        
+        UserSession.RefreshSession()
         viewModel.UpdateReport()
     
         
