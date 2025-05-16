@@ -19,7 +19,7 @@ module OTP =
         rnd.Next(100000, 999999).ToString()
     
     let SendEmail (toEmail: string) (code: string) =
-        let apiKey = "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"
+        let apiKey = "..."
         let client = new SendGridClient(apiKey)
         let from = EmailAddress("pscottcaven@gmail.com", "Compass")
         let subject = "Your OTP Verification Code"
