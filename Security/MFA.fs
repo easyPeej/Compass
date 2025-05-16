@@ -11,8 +11,8 @@ open System.Threading.Tasks
 
 module OTP =
 
-    let accountSid = "VA231721bee20f09b6b47b33e190eab03b"
-    let authToken = "[41c9e2d80dda183168f276e5e71e5030]"
+    let accountSid = "..."
+    let authToken = "..."
     
     let GenerateCode() =
         let rnd = System.Random()
